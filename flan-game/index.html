@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🍮 Flan Clicker</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #1a0a00;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      font-family: Georgia, serif;
+      transition: background 0.5s;
+    }
+    h1 { color: #f5c842; font-size: 2rem; margin-bottom: 8px; text-shadow: 0 0 10px #f5a623; }
+    #level-display { color: #f5a623; font-size: 1.1rem; margin-bottom: 4px; }
+    #click-count { color: #ccc; font-size: 0.9rem; margin-bottom: 20px; }
+    #flan-container {
+      position: relative;
+      cursor: pointer;
+      width: 160px;
+      height: 160px;
+    }
+    #flan {
+      width: 160px;
+      height: 160px;
+      transform-origin: center bottom;
+      user-select: none;
+    }
+    #level-name { color: #fff; font-size: 1.3rem; margin-top: 16px; min-height: 28px; text-align: center; }
+    #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+  </style>
+</head>
+<body>
+  <h1>🍮 Flan Clicker</h1>
+  <div id="level-display">Level: <span id="level-num">0</span></div>
+  <div id="click-count">Clicks: <span id="clicks">0</span></div>
+  <div id="flan-container">
+    <canvas id="flan" width="160" height="160"></canvas>
+  </div>
+  <div id="level-name">Click the flan!</div>
+  <canvas id="particles"></canvas>
+
+  <script>
+    const flanCanvas = document.getElementById('flan');
+    const ctx = flanCanvas.getContext('2d');
+    const pCanvas = document.getElementById('particles');
+    const pCtx = pCanvas.getContext('2d');
+    const levelNameEl = document.getElementById('level-name');
+    const levelNumEl = document.getElementById('level-num');
+    const clicksEl = document.getElementById('clicks');
+    const body = document.body;
+
+    let clicks = 0;
+    let shaking = false;
+    let particles = [];
+
+    const LEVELS = [
+      { threshold: 0,  name: 'Click the flan!',         bg: '#1a0a00', shake: 0,  wobble: 0 },
+      { threshold: 1,  name: 'It wiggles 🍮',            bg: '#1a0a00', shake: 3,  wobble: 1 },
+      { threshold: 5,  name: 'It shimmies! 😄',          bg: '#2a1200', shake: 6,  wobble: 2 },
+      { threshold: 15, name: 'IT JIGGLE-WIGGLES 🌊',     bg: '#3a1800', shake: 12, wobble: 3 },
+      { threshold: 30, name: 'FULL FLAN FRENZY 🔥',      bg: '#4a0000', shake: 20, wobble: 5 },
+      { threshold: 50, name: '🍮💥 FLAN OVERLOAD 💥🍮', bg: '#6a0000', shake: 32, wobble: 8 },
+    ];
+
+    function getLevel() {
+      let lv = 0;
+      for (let i = 0; i < LEVELS.length; i++) {
+        if (clicks >= LEVELS[i].threshold) lv = i;
+      }
+      return lv;
+    }
+
+    function drawFlan(w) {
+      ctx.clearRect(0, 0, 160, 160);
+      const t = Date.now() / 300;
+
+      // Caramel sauce top
+      ctx.fillStyle = '#b5651d';
+      ctx.beginPath();
+      ctx.ellipse(80, 50, 50 + Math.sin(t) * w, 18, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Caramel drips
+      for (let i = 0; i < 3; i++) {
+        const dx = (i - 1) * 30;
+        const dy = 6 + Math.sin(t + i) * w * 0.5;
+        ctx.fillStyle = '#b5651d';
+        ctx.beginPath();
+        ctx.ellipse(80 + dx, 60 + dy, 8, 12, 0, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Main flan body
+      ctx.fillStyle = '#f5c842';
+      ctx.beginPath();
+      ctx.ellipse(80, 90, 55 + Math.sin(t * 1.3) * w, 42 + Math.cos(t) * w * 0.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Highlight
+      ctx.fillStyle = 'rgba(255,255,255,0.18)';
+      ctx.beginPath();
+      ctx.ellipse(65, 75, 18, 10, -0.4, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Base plate
+      ctx.fillStyle = '#c8a000';
+      ctx.beginPath();
+      ctx.ellipse(80, 128, 60 + Math.sin(t * 0.8) * w * 0.5, 12, 0, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    function spawnParticles(x, y, level) {
+      const colors = ['#f5c842', '#b5651d', '#ff6b00', '#fff', '#ffcc00'];
+      const count = 5 + level * 3;
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x, y,
+          vx: (Math.random() - 0.5) * (4 + level * 2),
+          vy: (Math.random() - 1.5) * (4 + level * 2),
+          life: 1,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          r: 4 + Math.random() * 6,
+        });
+      }
+    }
+
+    function updateParticles() {
+      pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
+      particles = particles.filter(p => p.life > 0);
+      for (const p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.15;
+        p.life -= 0.03;
+        pCtx.globalAlpha = p.life;
+        pCtx.fillStyle = p.color;
+        pCtx.beginPath();
+        pCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        pCtx.fill();
+      }
+      pCtx.globalAlpha = 1;
+    }
+
+    function shake(el, amt) {
+      if (shaking) return;
+      shaking = true;
+      let f = 0;
+      const iv = setInterval(() => {
+        const dx = (Math.random() - 0.5) * amt * 2;
+        const dy = (Math.random() - 0.5) * amt;
+        el.style.transform = `translate(${dx}px, ${dy}px) rotate(${dx * 0.5}deg)`;
+        if (++f > 10) {
+          clearInterval(iv);
+          el.style.transform = '';
+          shaking = false;
+        }
+      }, 30);
+    }
+
+    function flash(level) {
+      if (level < 3) return;
+      const d = document.createElement('div');
+      d.style.cssText = `position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(255,200,0,${(level - 2) * 0.1});pointer-events:none;z-index:10;`;
+      document.body.appendChild(d);
+      setTimeout(() => d.remove(), 150);
+    }
+
+    flanCanvas.addEventListener('click', (e) => {
+      clicks++;
+      clicksEl.textContent = clicks;
+      const level = getLevel();
+      const lv = LEVELS[level];
+      levelNumEl.textContent = level;
+      levelNameEl.textContent = lv.name;
+      body.style.background = lv.bg;
+      spawnParticles(e.clientX, e.clientY, level);
+      shake(document.getElementById('flan-container'), lv.shake);
+      flash(level);
+    });
+
+    function resize() {
+      pCanvas.width = window.innerWidth;
+      pCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    (function loop() {
+      drawFlan(LEVELS[getLevel()].wobble);
+      updateParticles();
+      requestAnimationFrame(loop);
+    })();
+  </script>
+</body>
+</html>
