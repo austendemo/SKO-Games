@@ -34,6 +34,16 @@
     }
     #level-name { color: #fff; font-size: 1.3rem; margin-top: 16px; min-height: 28px; text-align: center; }
     #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+    #trademark {
+      position: fixed;
+      bottom: 12px;
+      left: 16px;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.72rem;
+      font-family: Georgia, serif;
+      pointer-events: none;
+      letter-spacing: 0.03em;
+    }
   </style>
 </head>
 <body>
@@ -45,6 +55,7 @@
   </div>
   <div id="level-name">Click the flan!</div>
   <canvas id="particles"></canvas>
+  <div id="trademark">™ Trademarked by Kevin Tran</div>
 
   <script>
     const flanCanvas = document.getElementById('flan');
