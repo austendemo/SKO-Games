@@ -97,6 +97,9 @@
     .bet-btn{background:rgba(255,255,255,.05);border:2px solid rgba(255,255,255,.2);color:white;border-radius:8px;padding:.4rem .8rem;font-family:'Nunito',sans-serif;font-weight:700;cursor:pointer;transition:all .2s;}
     .bet-btn:hover{background:rgba(191,0,255,.3);border-color:var(--neon-purple);transform:translateY(-2px);}
     .bet-btn.active{background:rgba(191,0,255,.5);border-color:var(--neon-purple);box-shadow:0 0 12px rgba(191,0,255,.5);transform:translateY(-2px);}
+    .bet-btn.danger{border-color:rgba(255,50,50,.5);}
+    .bet-btn.danger:hover{background:rgba(255,50,50,.3);border-color:#ff3333;}
+    .bet-btn.danger.active{background:rgba(255,50,50,.5);border-color:#ff3333;box-shadow:0 0 12px rgba(255,50,50,.6);}
     #controls{display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;}
     #spin-btn,#max-btn{flex:1;min-width:140px;padding:1rem 1.5rem;font-family:'Bangers',cursive;letter-spacing:.08em;font-size:1.3rem;border:none;border-radius:14px;cursor:pointer;transition:all .15s;}
     #spin-btn{background:linear-gradient(135deg,var(--neon-pink),var(--neon-purple));color:white;box-shadow:0 4px 20px rgba(255,0,110,.5);}
@@ -104,8 +107,8 @@
     #spin-btn:disabled{opacity:.5;cursor:not-allowed;}
     @keyframes btn-shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-3px) rotate(-1deg);}75%{transform:translateX(3px) rotate(1deg);}}
     #spin-btn.spinning{animation:btn-shake .2s ease-in-out infinite;}
-    #max-btn{background:linear-gradient(135deg,var(--neon-yellow),#ff9500);color:#0a0a0f;box-shadow:0 4px 20px rgba(255,255,0,.4);}
-    #max-btn:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 8px 30px rgba(255,255,0,.6);}
+    #max-btn{background:linear-gradient(135deg,#ff3333,#ff6600);color:white;box-shadow:0 4px 20px rgba(255,50,50,.4);}
+    #max-btn:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 8px 30px rgba(255,50,50,.6);}
     #result-display{text-align:center;min-height:2rem;font-size:1.2rem;font-weight:900;margin-bottom:1rem;}
     #win-history{background:var(--card-bg);border:2px solid rgba(255,255,255,.08);border-radius:12px;padding:1rem;margin-bottom:1.5rem;}
     #win-history h3{font-family:'Bangers',cursive;letter-spacing:.05em;color:var(--neon-cyan);margin-bottom:.5rem;font-size:1rem;}
@@ -120,13 +123,8 @@
     #paytable td{padding:.35rem .5rem;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:middle;}
     #paytable tr:hover td{background:rgba(255,255,255,.03);}
     .pt-logo{width:28px;height:28px;object-fit:contain;border-radius:6px;background:white;padding:2px;vertical-align:middle;margin-right:6px;}
-
-    /* ====== TWITTER FEED ====== */
-    #twitter-feed{
-      background:var(--twitter-bg);border:2px solid #1d9bf0;
-      border-radius:16px;padding:1rem;margin-bottom:1.5rem;
-      box-shadow:0 0 20px rgba(29,155,240,.25);
-    }
+    /* TWITTER */
+    #twitter-feed{background:var(--twitter-bg);border:2px solid #1d9bf0;border-radius:16px;padding:1rem;margin-bottom:1.5rem;box-shadow:0 0 20px rgba(29,155,240,.25);}
     #twitter-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;border-bottom:1px solid rgba(29,155,240,.25);padding-bottom:.75rem;}
     #twitter-header .x-logo{font-size:1.4rem;font-weight:900;color:white;}
     #twitter-header h3{font-family:'Bangers',cursive;letter-spacing:.05em;color:#1d9bf0;font-size:1rem;flex:1;}
@@ -151,30 +149,27 @@
     .tourist{background:rgba(255,165,0,.3);color:#ffd280;}
     .scared{background:rgba(255,50,50,.3);color:#ff9999;}
     .chaos{background:rgba(191,0,255,.3);color:#e080ff;}
-
-    /* ====== HANTAVAPE AD ====== */
-    #hantavape-ad{position:relative;border-radius:20px;padding:1.5rem;margin-bottom:2rem;overflow:hidden;background:linear-gradient(135deg,#0d1f0d 0%,#1a0d2e 50%,#0d1a1f 100%);border:2px solid #39ff14;box-shadow:0 0 30px rgba(57,255,20,.3),0 0 60px rgba(0,245,255,.1);animation:ad-border-pulse 3s ease-in-out infinite;}
-    @keyframes ad-border-pulse{0%,100%{box-shadow:0 0 30px rgba(57,255,20,.3),0 0 60px rgba(0,245,255,.1);border-color:#39ff14;}50%{box-shadow:0 0 50px rgba(57,255,20,.6),0 0 100px rgba(0,245,255,.2);border-color:#00f5ff;}}
+    /* HANTAVAPE AD */
+    #hantavape-ad{position:relative;border-radius:20px;padding:1.5rem;margin-bottom:2rem;overflow:hidden;background:linear-gradient(135deg,#0d1f0d 0%,#1a0d2e 50%,#0d1a1f 100%);border:2px solid #39ff14;box-shadow:0 0 30px rgba(57,255,20,.3);animation:ad-border-pulse 3s ease-in-out infinite;}
+    @keyframes ad-border-pulse{0%,100%{border-color:#39ff14;box-shadow:0 0 30px rgba(57,255,20,.3);}50%{border-color:#00f5ff;box-shadow:0 0 50px rgba(57,255,20,.6);}}
     #ad-smoke{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;opacity:0.15;}
     .smoke-puff{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(57,255,20,.8) 0%,transparent 70%);animation:smoke-rise linear infinite;}
     @keyframes smoke-rise{0%{transform:translateY(0) scale(1);opacity:0.8;}100%{transform:translateY(-200px) scale(3);opacity:0;}}
     #ad-sponsored{font-size:.6rem;font-weight:900;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem;}
     #ad-sponsored::before{content:'AD';background:rgba(255,255,255,.15);padding:.1rem .35rem;border-radius:4px;font-size:.55rem;}
     #ad-inner{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;}
-    #ad-img-wrap{flex-shrink:0;}
-    #ad-img{width:160px;height:160px;object-fit:contain;border-radius:16px;filter:drop-shadow(0 0 20px rgba(57,255,20,.6)) drop-shadow(0 0 40px rgba(0,245,255,.3));animation:ad-img-float 3s ease-in-out infinite;}
+    #ad-img{width:160px;height:160px;object-fit:contain;border-radius:16px;filter:drop-shadow(0 0 20px rgba(57,255,20,.6));animation:ad-img-float 3s ease-in-out infinite;}
     @keyframes ad-img-float{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-8px) rotate(2deg);}}
     #ad-text{flex:1;min-width:200px;}
-    #ad-title{font-family:'Bangers',cursive;font-size:clamp(2rem,5vw,3rem);letter-spacing:.06em;background:linear-gradient(135deg,#39ff14,#00f5ff,#39ff14);background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:ad-title-shimmer 2s linear infinite;line-height:1;margin-bottom:.2rem;}
-    @keyframes ad-title-shimmer{0%{background-position:0% 50%;}100%{background-position:200% 50%;}}
+    #ad-title{font-family:'Bangers',cursive;font-size:clamp(2rem,5vw,3rem);letter-spacing:.06em;background:linear-gradient(135deg,#39ff14,#00f5ff,#39ff14);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:ad-title-shimmer 2s linear infinite;line-height:1;margin-bottom:.2rem;}
+    @keyframes ad-title-shimmer{0%{background-position:0%;}100%{background-position:200%;}}
     #ad-tagline{font-size:.95rem;font-weight:900;color:rgba(255,255,255,.85);margin-bottom:.75rem;font-style:italic;}
     #ad-features{list-style:none;margin-bottom:.9rem;}
-    #ad-features li{font-size:.8rem;color:rgba(255,255,255,.75);padding:.2rem 0;display:flex;align-items:center;gap:.4rem;}
-    #ad-cta{display:inline-block;background:linear-gradient(135deg,#39ff14,#00c853);color:#000;font-family:'Bangers',cursive;font-size:1.3rem;letter-spacing:.06em;padding:.6rem 1.6rem;border-radius:12px;box-shadow:0 0 20px rgba(57,255,20,.5);animation:cta-pulse .8s ease-in-out infinite alternate;cursor:pointer;margin-bottom:.6rem;display:block;width:fit-content;}
+    #ad-features li{font-size:.8rem;color:rgba(255,255,255,.75);padding:.2rem 0;}
+    #ad-cta{display:block;width:fit-content;background:linear-gradient(135deg,#39ff14,#00c853);color:#000;font-family:'Bangers',cursive;font-size:1.3rem;letter-spacing:.06em;padding:.6rem 1.6rem;border-radius:12px;animation:cta-pulse .8s ease-in-out infinite alternate;cursor:pointer;margin-bottom:.6rem;}
     @keyframes cta-pulse{from{box-shadow:0 0 15px rgba(57,255,20,.4);transform:scale(1);}to{box-shadow:0 0 35px rgba(57,255,20,.8);transform:scale(1.03);}}
-    #ad-disclaimer{font-size:.58rem;color:rgba(255,255,255,.3);line-height:1.4;max-width:420px;}
-
-    /* ====== OVERLAYS ====== */
+    #ad-disclaimer{font-size:.58rem;color:rgba(255,255,255,.3);line-height:1.4;}
+    /* OVERLAYS */
     .overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:100;backdrop-filter:blur(8px);}
     #win-overlay{background:rgba(0,255,100,.15);animation:overlay-pop .3s ease-out;}
     #lose-overlay{background:rgba(255,0,50,.15);animation:overlay-pop .3s ease-out;}
@@ -192,12 +187,12 @@
     .ov-btn{background:linear-gradient(135deg,var(--neon-pink),var(--neon-purple));color:white;border:none;border-radius:12px;padding:.75rem 2rem;font-family:'Bangers',cursive;font-size:1.2rem;letter-spacing:.05em;cursor:pointer;transition:all .2s;}
     .ov-btn:hover{transform:translateY(-2px);box-shadow:0 5px 20px rgba(255,0,110,.5);}
     #puppy-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:150;backdrop-filter:blur(8px);background:radial-gradient(ellipse at center,rgba(255,200,0,.3) 0%,rgba(255,0,110,.2) 50%,rgba(191,0,255,.25) 100%);animation:overlay-pop .4s ease-out;}
-    #puppy-card{background:var(--card-bg);border:4px solid var(--neon-yellow);border-radius:28px;padding:2rem;text-align:center;max-width:460px;width:92%;box-shadow:0 0 80px rgba(255,255,0,.6),0 0 160px rgba(255,0,110,.3);animation:puppy-bounce .6s cubic-bezier(.175,.885,.32,1.275);}
+    #puppy-card{background:var(--card-bg);border:4px solid var(--neon-yellow);border-radius:28px;padding:2rem;text-align:center;max-width:460px;width:92%;box-shadow:0 0 80px rgba(255,255,0,.6);animation:puppy-bounce .6s cubic-bezier(.175,.885,.32,1.275);}
     @keyframes puppy-bounce{0%{transform:scale(.3) rotate(-8deg);opacity:0;}50%{transform:scale(1.08) rotate(3deg);}75%{transform:scale(.96) rotate(-1deg);}100%{transform:scale(1) rotate(0);opacity:1;}}
-    #puppy-card .big-title{font-family:'Bangers',cursive;font-size:clamp(1.8rem,5vw,2.6rem);letter-spacing:.06em;background:linear-gradient(135deg,var(--neon-yellow),var(--neon-pink),var(--neon-cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.3rem;animation:title-pulse 1s ease-in-out infinite;}
+    #puppy-card .big-title{font-family:'Bangers',cursive;font-size:clamp(1.8rem,5vw,2.6rem);letter-spacing:.06em;background:linear-gradient(135deg,var(--neon-yellow),var(--neon-pink),var(--neon-cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.3rem;}
     .puppy-sub{font-size:.85rem;color:var(--neon-cyan);margin-bottom:1rem;font-weight:700;}
     .puppy-photo{width:240px;height:240px;object-fit:cover;border-radius:20px;border:4px solid var(--neon-yellow);box-shadow:0 0 40px rgba(255,255,0,.5);animation:puppy-pulse 1s ease-in-out infinite alternate;display:block;margin:0 auto 1rem;}
-    @keyframes puppy-pulse{from{box-shadow:0 0 30px rgba(255,255,0,.5);transform:scale(1);}to{box-shadow:0 0 60px rgba(255,255,0,.8);transform:scale(1.03);}}
+    @keyframes puppy-pulse{from{transform:scale(1);}to{transform:scale(1.03);}}
     .puppy-msg{font-family:'Bangers',cursive;font-size:1.4rem;letter-spacing:.05em;color:var(--neon-green);margin-bottom:.3rem;}
     .puppy-detail{font-size:.8rem;color:rgba(255,255,255,.65);margin-bottom:1.2rem;}
     #broke-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:150;backdrop-filter:blur(10px);background:radial-gradient(ellipse at center,rgba(255,0,50,.3) 0%,rgba(100,0,0,.4) 100%);animation:overlay-pop .4s ease-out;}
@@ -208,7 +203,7 @@
     @keyframes broke-wobble{0%,100%{transform:rotate(-2deg);}50%{transform:rotate(2deg);}}
     .broke-msg{font-family:'Bangers',cursive;font-size:1.4rem;letter-spacing:.05em;color:#ff6666;margin-bottom:.3rem;}
     .broke-detail{font-size:.8rem;color:rgba(255,255,255,.55);margin-bottom:1.2rem;}
-    #restart-btn{background:linear-gradient(135deg,#ff3333,#ff6600);color:white;border:none;border-radius:12px;padding:.75rem 2rem;font-family:'Bangers',cursive;font-size:1.2rem;letter-spacing:.05em;cursor:pointer;transition:all .2s;box-shadow:0 4px 20px rgba(255,50,50,.4);}
+    #restart-btn{background:linear-gradient(135deg,#ff3333,#ff6600);color:white;border:none;border-radius:12px;padding:.75rem 2rem;font-family:'Bangers',cursive;font-size:1.2rem;letter-spacing:.05em;cursor:pointer;transition:all .2s;}
     #restart-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,50,50,.7);}
     .hidden{display:none!important;}
     .confetti{position:fixed;width:10px;height:10px;top:-10px;animation:confetti-fall linear forwards;z-index:200;pointer-events:none;border-radius:2px;}
@@ -243,18 +238,22 @@
       </div>
       <div id="payline"></div>
     </div>
+
     <div id="bet-section">
       <label>BET (rizz per spin):</label>
       <div id="bet-buttons">
         <button class="bet-btn active" data-bet="5">5</button>
         <button class="bet-btn" data-bet="10">10</button>
         <button class="bet-btn" data-bet="25">25</button>
-        <button class="bet-btn" data-bet="50">50 (YOLO)</button>
+        <button class="bet-btn" data-bet="50">50</button>
+        <button class="bet-btn danger" data-bet="500">500 💀</button>
+        <button class="bet-btn danger" data-bet="1000">1000 ☠️</button>
       </div>
     </div>
+
     <div id="controls">
       <button id="spin-btn">🎰 SPIN (no cap)</button>
-      <button id="max-btn">💯 MAX BET (sigma move)</button>
+      <button id="max-btn">💀 MAX BET 1000 (pure chaos)</button>
     </div>
     <div id="result-display"></div>
     <div id="win-history">
@@ -268,7 +267,6 @@
       </table>
     </div>
 
-    <!-- HANTAVIRUS LIVE FEED -->
     <div id="twitter-feed">
       <div id="twitter-header">
         <span class="x-logo">𝕏</span>
@@ -278,19 +276,16 @@
       <div id="tweet-list"></div>
     </div>
 
-    <!-- HANTAVAPE AD -->
     <div id="hantavape-ad">
       <div id="ad-smoke">
-        <div class="smoke-puff" style="width:80px;height:80px;left:10%;bottom:0;animation-duration:4s;animation-delay:0s;"></div>
+        <div class="smoke-puff" style="width:80px;height:80px;left:10%;bottom:0;animation-duration:4s;"></div>
         <div class="smoke-puff" style="width:60px;height:60px;left:30%;bottom:0;animation-duration:5s;animation-delay:1s;"></div>
         <div class="smoke-puff" style="width:100px;height:100px;left:60%;bottom:0;animation-duration:3.5s;animation-delay:.5s;"></div>
         <div class="smoke-puff" style="width:70px;height:70px;left:80%;bottom:0;animation-duration:4.5s;animation-delay:2s;"></div>
       </div>
       <div id="ad-sponsored">Sponsored</div>
       <div id="ad-inner">
-        <div id="ad-img-wrap">
-          <img id="ad-img" src="https://raw.githubusercontent.com/austendemo/SKO-Games/main/hantavape.png" alt="HantaVape" onerror="this.style.fontSize='5rem';this.style.lineHeight='160px';this.textContent='💨';" />
-        </div>
+        <img id="ad-img" src="https://raw.githubusercontent.com/austendemo/SKO-Games/main/hantavape.png" alt="HantaVape" />
         <div id="ad-text">
           <div id="ad-title">💨 HantaVape™</div>
           <div id="ad-tagline">"Why fear the virus when you can BECOME it?"</div>
@@ -299,16 +294,14 @@
             <li>🚢 7 flavors incl. "Cruise Ship Mist" &amp; "Ohio Basement"</li>
             <li>☣️ Not endorsed by the US Dept. of Health (they stopped answering)</li>
             <li>💀 Do NOT use near mice, ships, or the outdoors</li>
-            <li>✅ Sigma grindset verified (results not typical)</li>
           </ul>
           <div id="ad-cta">VAPE THE VIBES 💨🐀</div>
-          <div id="ad-disclaimer">*HantaVape™ is a parody product and not real. Probably. HantaVape LLC assumes no liability for rodent-related incidents, cruise ship quarantines, or CDC non-responses. Do not inhale near any mammals. Keep away from government officials.</div>
+          <div id="ad-disclaimer">*HantaVape™ is a parody product. HantaVape LLC assumes no liability for rodent-related incidents or CDC non-responses.</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Win overlay -->
   <div id="win-overlay" class="overlay hidden">
     <div class="overlay-card">
       <div class="ov-emoji" id="win-emoji"></div>
@@ -317,7 +310,6 @@
       <button class="ov-btn" id="win-close">aight bet, collect W</button>
     </div>
   </div>
-  <!-- Lose overlay -->
   <div id="lose-overlay" class="overlay hidden">
     <div class="overlay-card">
       <div class="ov-emoji" id="lose-emoji"></div>
@@ -325,7 +317,6 @@
       <button class="ov-btn" id="lose-close">rip bozo, keep going</button>
     </div>
   </div>
-  <!-- 1000-coin comeback puppy -->
   <div id="puppy-overlay" class="hidden">
     <div id="puppy-card">
       <div class="big-title">🐶 COMEBACK KING 🐶</div>
@@ -336,7 +327,6 @@
       <button class="ov-btn" id="puppy-close">ok bestie, keep grinding</button>
     </div>
   </div>
-  <!-- ZERO COINS broke puppy -->
   <div id="broke-overlay" class="hidden">
     <div id="broke-card">
       <div class="big-title">💀 COMPLETELY COOKED 💀</div>
@@ -350,8 +340,6 @@
 
   <script>
     const BASE = 'https://raw.githubusercontent.com/austendemo/SKO-Games/main/games/slot-machine/';
-
-    // 17 local logo files — numbered by rarity (01 = rarest/highest payout)
     const SYMBOLS = [
       { id:'01', name:'Logo 01', payout:500,  weight:1  },
       { id:'02', name:'Logo 02', payout:300,  weight:2  },
@@ -371,34 +359,33 @@
       { id:'16', name:'Logo 16', payout:8,    weight:16 },
       { id:'17', name:'Logo 17', payout:6,    weight:17 },
     ];
-
-    function logoUrl(s){ return BASE + 'logo_' + s.id + '.png'; }
-
-    const WIN_MESSAGES = [
+    function logoUrl(s){ return BASE+'logo_'+s.id+'.png'; }
+    const WIN_MESSAGES=[
       {emoji:'💰',text:'DEAL CLOSED FR'},{emoji:'🔥',text:'BUSSIN PIPELINE'},
       {emoji:'✨',text:'SLAY MOMENT'},{emoji:'🎯',text:'QUOTA CRUSHED'},{emoji:'🚀',text:'TO THE MOON'},
     ];
-    const LOSE_MESSAGES = [
+    const LOSE_MESSAGES=[
       {emoji:'💀',text:'L + RATIO'},{emoji:'🤡',text:'CLOWNED'},
       {emoji:'😭',text:'RIP BOZO'},{emoji:'📉',text:'PIPELINE DOWN'},
     ];
-    const MEME_BANNERS = [
+    const MEME_BANNERS=[
       '💀 the machine said skill issue. no cap 💀','🗿 ohio moment detected in the pipeline 🗿',
       '✨ sigma grindset = winning slots fr ✨','🤌 italian hands could not save your ARR 🤌',
       '🎪 welcome to the circus (you are the AE) 🎪','🚀 to the moon but quota requires more spins 🚀',
       '💸 customer spinning detected. this is fine. 💸',
+      '☠️ 1000 bet?? absolute deviant behavior ☠️','💀 bro really said \'yolo\' to their entire bankroll 💀',
     ];
-    const ALL_TWEETS = [
+    const ALL_TWEETS=[
       {avatar:'🚢',name:'Brenda Kowalski',handle:'@brendak_cruising',tag:'tourist',body:'Day 4 of our Caribbean cruise and honestly having the TIME of my life 🌊 ignore the <span class="hashtag">#hantavirus</span> stuff my daughter keeps texting me about. The buffet is incredible!!',likes:'2.3K',rts:'891',replies:'4.1K',time:'2m ago'},
-      {avatar:'🏛️',name:'HHS Public Affairs',handle:'@HHSgov',verified:true,tag:'gov',body:'Regarding ongoing inquiries about <span class="hashtag">#Hantavirus</span>: We are aware of the situation. We are monitoring. Please do not contact this office directly. We cannot help you individually. Thank you for your understanding. Stay safe.',likes:'891',rts:'12.4K',replies:'31.2K',time:'4m ago'},
+      {avatar:'🏛️',name:'HHS Public Affairs',handle:'@HHSgov',verified:true,tag:'gov',body:'Regarding ongoing inquiries about <span class="hashtag">#Hantavirus</span>: We are aware of the situation. We are monitoring. Please do not contact this office directly. We cannot help you individually. Thank you for your understanding.',likes:'891',rts:'12.4K',replies:'31.2K',time:'4m ago'},
       {avatar:'😱',name:'Jake from Omaha',handle:'@jakefromohiomaha',tag:'scared',body:'WHY IS NOBODY TALKING ABOUT THIS my neighbor\'s cousin\'s coworker said they saw a MOUSE on a cruise ship and now I\'m not going outside ever again <span class="hashtag">#hantavirus</span> <span class="hashtag">#StayHome</span>',likes:'47K',rts:'89K',replies:'2.1K',time:'6m ago'},
-      {avatar:'🚢',name:'Royal Caribbean Fan Account',handle:'@RCL_fanboy2009',tag:'tourist',body:'Just got off the phone with Royal Caribbean. They said the <span class="hashtag">#hantavirus</span> concerns are "overblown" and our Mediterranean cruise departs Friday as scheduled ⛵ Honestly can\'t wait!! Packing now!!',likes:'234',rts:'5.8K',replies:'9.3K',time:'11m ago'},
-      {avatar:'🏛️',name:'CDC Communications',handle:'@CDCgov',verified:true,tag:'gov',body:'<span class="hashtag">#Hantavirus</span> update: We are still gathering data. In the meantime, avoid rodents. Wash your hands. Do not DM us. Do not call us. We are doing our best. Please.',likes:'3.1K',rts:'18.7K',replies:'44K',time:'15m ago'},
-      {avatar:'🙅',name:'Karen Situazione',handle:'@karennotgoing',tag:'scared',body:'I was LITERALLY about to board a cruise ship and my doctor texted me "do not go outside" with no other context. Is this about <span class="hashtag">#hantavirus</span>? SOMEONE EXPLAIN. I have 14 bags packed. The Uber is here.',likes:'71K',rts:'103K',replies:'5.6K',time:'18m ago'},
-      {avatar:'🚢',name:'Deborah Sunshine ✈️',handle:'@deb_loves_cruises',tag:'tourist',body:'Day 7 on the ship!! We\'ve been told to "stay in our cabins as a precaution" but honestly I think it\'s just a drill 😊 The jacuzzi is still open! Posting from the jacuzzi rn 🛁 <span class="hashtag">#hantavirus</span>',likes:'156K',rts:'201K',replies:'88K',time:'22m ago'},
-      {avatar:'🏛️',name:'FEMA',handle:'@fema',verified:true,tag:'gov',body:'We have received 2.4 million inquiries about <span class="hashtag">#hantavirus</span> in the past 48 hours. No, we cannot call you back individually. No, we cannot advise on cruise bookings. Please consult your physician or just stay home.',likes:'6.7K',rts:'29K',replies:'67K',time:'28m ago'},
-      {avatar:'😰',name:'Chad Nervousowitz',handle:'@chadnervous99',tag:'scared',body:'bro i looked up <span class="hashtag">#hantavirus</span> symptoms and i definitely don\'t have them but also i\'m not going outside until 2027 just to be safe. ordered 400 dollars of DoorDash. canceled my gym membership. this is my life now.',likes:'312K',rts:'450K',replies:'12K',time:'35m ago'},
-      {avatar:'🚢',name:'Gary &amp; Linda Baumgartner',handle:'@gary_linda_travel',tag:'tourist',body:'UPDATE: The cruise ship captain just announced over the intercom to "remain calm and avoid the lower decks." Linda thinks it\'s a surprise party for someone. I am less sure. Either way the dinner shows are still on! <span class="hashtag">#hantavirus</span> <span class="hashtag">#ThisIsFine</span>',likes:'891K',rts:'1.2M',replies:'234K',time:'41m ago'},
+      {avatar:'🚢',name:'Royal Caribbean Fan',handle:'@RCL_fanboy2009',tag:'tourist',body:'Just got off the phone with Royal Caribbean. They said the <span class="hashtag">#hantavirus</span> concerns are "overblown" and our cruise departs Friday as scheduled ⛵ Can\'t wait!! Packing now!!',likes:'234',rts:'5.8K',replies:'9.3K',time:'11m ago'},
+      {avatar:'🏛️',name:'CDC Communications',handle:'@CDCgov',verified:true,tag:'gov',body:'<span class="hashtag">#Hantavirus</span> update: We are still gathering data. Avoid rodents. Wash your hands. Do not DM us. Do not call us. We are doing our best. Please.',likes:'3.1K',rts:'18.7K',replies:'44K',time:'15m ago'},
+      {avatar:'🙅',name:'Karen Situazione',handle:'@karennotgoing',tag:'scared',body:'I was LITERALLY about to board a cruise ship and my doctor texted me "do not go outside" with no other context. Is this about <span class="hashtag">#hantavirus</span>? I have 14 bags packed. The Uber is here.',likes:'71K',rts:'103K',replies:'5.6K',time:'18m ago'},
+      {avatar:'🚢',name:'Deborah Sunshine ✈️',handle:'@deb_loves_cruises',tag:'tourist',body:'Day 7 on the ship!! We\'ve been told to "stay in our cabins as a precaution" but I think it\'s just a drill 😊 The jacuzzi is still open! <span class="hashtag">#vacation</span> <span class="hashtag">#hantavirus</span>',likes:'156K',rts:'201K',replies:'88K',time:'22m ago'},
+      {avatar:'🏛️',name:'FEMA',handle:'@fema',verified:true,tag:'gov',body:'2.4 million inquiries about <span class="hashtag">#hantavirus</span> in 48 hours. We cannot call you back. We cannot advise on cruise bookings. Please stay home.',likes:'6.7K',rts:'29K',replies:'67K',time:'28m ago'},
+      {avatar:'😰',name:'Chad Nervousowitz',handle:'@chadnervous99',tag:'scared',body:'looked up <span class="hashtag">#hantavirus</span> symptoms and i don\'t have them but also not going outside until 2027. ordered $400 of DoorDash. canceled my gym. this is my life now.',likes:'312K',rts:'450K',replies:'12K',time:'35m ago'},
+      {avatar:'🚢',name:'Gary &amp; Linda Baumgartner',handle:'@gary_linda_travel',tag:'tourist',body:'UPDATE: captain announced "remain calm and avoid the lower decks." Linda thinks it\'s a surprise party. I am less sure. Dinner shows still on! <span class="hashtag">#hantavirus</span> <span class="hashtag">#ThisIsFine</span>',likes:'891K',rts:'1.2M',replies:'234K',time:'41m ago'},
     ];
     const TAG_COLORS={gov:'gov',tourist:'tourist',scared:'scared',chaos:'chaos'};
     const TAG_LABELS={gov:'🏛️ GOV',tourist:'🚢 ON A CRUISE',scared:'😱 SCARED',chaos:'🔥 CHAOS'};
@@ -413,12 +400,10 @@
       const list=document.getElementById('tweet-list');
       const t={...ALL_TWEETS[tweetIdx%ALL_TWEETS.length]};
       const mins=Math.floor(Math.random()*3);t.time=mins===0?'just now':mins+'m ago';
-      const newEl=renderTweet(t,true);list.insertBefore(newEl,list.firstChild);
+      list.insertBefore(renderTweet(t,true),list.firstChild);
       while(list.children.length>10)list.removeChild(list.lastChild);
       tweetIdx++;setTimeout(rotateTweets,8000+Math.random()*7000);
     }
-
-    // ====== SLOT MACHINE ======
     let balance=100,currentBet=5,isSpinning=false,history=[],spinCount=0;
     let hasDippedBelow1000=false,puppyShownThisRound=false;
     const balanceEl=document.getElementById('balance'),spinBtn=document.getElementById('spin-btn'),maxBtn=document.getElementById('max-btn');
@@ -427,7 +412,6 @@
     const puppyOv=document.getElementById('puppy-overlay'),brokeOv=document.getElementById('broke-overlay');
     const reelInners=[1,2,3].map(i=>document.getElementById('reel'+i+'-inner'));
     const reels=[1,2,3].map(i=>document.getElementById('reel'+i));
-
     function createSymbolEl(s){
       const d=document.createElement('div');d.className='reel-symbol';d.dataset.id=s.id;
       const img=document.createElement('img');img.className='logo-img';img.src=logoUrl(s);img.alt=s.name;
@@ -438,8 +422,7 @@
     function updateSymbolEl(el,s){
       el.dataset.id=s.id;
       const img=el.querySelector('img.logo-img'),lbl=el.querySelector('.logo-label');
-      if(img){img.src=logoUrl(s);img.alt=s.name;}
-      if(lbl)lbl.textContent=s.name;
+      if(img){img.src=logoUrl(s);img.alt=s.name;} if(lbl)lbl.textContent=s.name;
     }
     function weightedRandom(){
       const total=SYMBOLS.reduce((a,s)=>a+(1/s.weight),0);let r=Math.random()*total;
@@ -476,9 +459,8 @@
       const result=[weightedRandom(),weightedRandom(),weightedRandom()];
       await Promise.all([animateReel(0,result[0],900),animateReel(1,result[1],1200),animateReel(2,result[2],1500)]);
       const [a,b,c]=result;let payout=0,isWin=false;
-      if(a.id===b.id&&b.id===c.id){
-        payout=currentBet*a.payout;isWin=true;reels.forEach(r=>r.classList.add('winner'));
-      }else if(a.id===b.id||b.id===c.id||a.id===c.id){
+      if(a.id===b.id&&b.id===c.id){payout=currentBet*a.payout;isWin=true;reels.forEach(r=>r.classList.add('winner'));}
+      else if(a.id===b.id||b.id===c.id||a.id===c.id){
         payout=currentBet*2;isWin=true;
         reels.forEach((r,i)=>{if((i===0&&(a.id===b.id||a.id===c.id))||(i===1&&(a.id===b.id||b.id===c.id))||(i===2&&(b.id===c.id||a.id===c.id)))r.classList.add('winner');});
       }
@@ -503,11 +485,10 @@
     function recordHistory(result,payout,win){
       history.unshift({names:result.map(r=>'#'+r.id).join(' | '),payout,bet:currentBet,win});
       if(history.length>20)history.pop();
-      histList.innerHTML=history.map(h=>`<li class="${h.win?'win':'loss'}"><span>${h.names}</span><span>${h.win?'W +'+h.payout.toLocaleString()+' 🤑':'L -'+h.bet+' 💀'}</span></li>`).join('');
+      histList.innerHTML=history.map(h=>`<li class="${h.win?'win':'loss'}"><span>${h.names}</span><span>${h.win?'W +'+h.payout.toLocaleString()+' 🤑':'L -'+h.bet.toLocaleString()+' 💀'}</span></li>`).join('');
     }
     function spawnParticles(){const emojis=['💸','⭐','🌟','✨','💫','🎉','🎊','🔥','💎'];for(let i=0;i<12;i++)setTimeout(()=>{const p=document.createElement('div');p.className='particle';p.textContent=emojis[Math.floor(Math.random()*emojis.length)];p.style.left=Math.random()*100+'vw';p.style.animationDuration=(2+Math.random()*3)+'s';p.style.fontSize=(1+Math.random()*1.5)+'rem';document.getElementById('particles').appendChild(p);setTimeout(()=>p.remove(),5000);},i*80);}
     function spawnConfetti(){const cols=['#ff006e','#00f5ff','#ffff00','#39ff14','#bf00ff','#ff9500'];for(let i=0;i<80;i++)setTimeout(()=>{const c=document.createElement('div');c.className='confetti';c.style.left=Math.random()*100+'vw';c.style.background=cols[Math.floor(Math.random()*cols.length)];c.style.width=(6+Math.random()*8)+'px';c.style.height=c.style.width;c.style.setProperty('--drift',(Math.random()*200-100)+'px');c.style.animationDuration=(2+Math.random()*3)+'s';document.body.appendChild(c);setTimeout(()=>c.remove(),5000);},i*25);}
-
     function buildPayTable(){
       const tbody=document.getElementById('paytable-body');
       const vibes=['UNICORN DEAL 🦄','MEGA W 🔥','BUSSIN FR ✨','PIPELINE HEAT 🔥','SLAY 💅','MID DEAL 😐','SMALL W 💸','ok sure','sure i guess','whatever','sure','ok','decent','not bad','meh','L energy','rip'];
@@ -524,16 +505,16 @@
       ['Any 2 match','2x','mid (still a W tho)'].forEach(t=>{const td=document.createElement('td');td.textContent=t;trAny.appendChild(td);});
       tbody.appendChild(trAny);
     }
-
     spinBtn.addEventListener('click',spin);
     maxBtn.addEventListener('click',()=>{
       document.querySelectorAll('.bet-btn').forEach(b=>b.classList.remove('active'));
-      document.querySelector('[data-bet="50"]').classList.add('active');
-      currentBet=50;showMeme('🗿 MAX BET ACTIVATED. sigma behavior detected 🗿');
+      document.querySelector('[data-bet="1000"]').classList.add('active');
+      currentBet=1000;showMeme('☠️ MAX BET 1000 ACTIVATED. you have lost your mind. legend. ☠️');
     });
     document.querySelectorAll('.bet-btn').forEach(btn=>btn.addEventListener('click',()=>{
       document.querySelectorAll('.bet-btn').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');currentBet=parseInt(btn.dataset.bet);
+      if(currentBet>=500)showMeme(currentBet===1000?'☠️ 1000 bet?? absolute deviant behavior ☠️':'💀 500 bet?? bro really said YOLO 💀');
     }));
     document.getElementById('win-close').addEventListener('click',()=>{winOv.classList.add('hidden');reels.forEach(r=>r.classList.remove('winner'));});
     document.getElementById('lose-close').addEventListener('click',()=>loseOv.classList.add('hidden'));
@@ -555,12 +536,7 @@
       p.style.opacity='0.1';p.style.fontSize=(0.8+Math.random())+'rem';
       document.getElementById('particles').appendChild(p);setTimeout(()=>p.remove(),13000);
     },900);
-
-    buildReels();
-    buildPayTable();
-    updateBalance();
-    buildTweetFeed();
-    setTimeout(rotateTweets,8000);
+    buildReels();buildPayTable();updateBalance();buildTweetFeed();setTimeout(rotateTweets,8000);
   </script>
 </body>
 </html>
