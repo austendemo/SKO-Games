@@ -302,6 +302,7 @@
     </div>
   </div>
 
+  <!-- Win overlay -->
   <div id="win-overlay" class="overlay hidden">
     <div class="overlay-card">
       <div class="ov-emoji" id="win-emoji"></div>
@@ -310,6 +311,7 @@
       <button class="ov-btn" id="win-close">aight bet, collect W</button>
     </div>
   </div>
+  <!-- Lose overlay -->
   <div id="lose-overlay" class="overlay hidden">
     <div class="overlay-card">
       <div class="ov-emoji" id="lose-emoji"></div>
@@ -317,23 +319,27 @@
       <button class="ov-btn" id="lose-close">rip bozo, keep going</button>
     </div>
   </div>
+
+  <!-- 1000-coin comeback: Dolly is proud -->
   <div id="puppy-overlay" class="hidden">
     <div id="puppy-card">
       <div class="big-title">🐶 COMEBACK KING 🐶</div>
-      <div class="puppy-sub">you clawed back to 1000 rizz coins. the dog is proud.</div>
-      <img class="puppy-photo" src="https://raw.githubusercontent.com/austendemo/SKO-Games/main/games/slot-machine/puppy.png" alt="proud puppy" />
-      <div class="puppy-msg">THE DOG BELIEVES IN YOU 🐶✨</div>
+      <div class="puppy-sub">you clawed back to 1000 rizz coins. Dolly is proud.</div>
+      <img class="puppy-photo" src="https://raw.githubusercontent.com/austendemo/SKO-Games/main/games/slot-machine/puppy.png" alt="Dolly" />
+      <div class="puppy-msg">DOLLY BELIEVES IN YOU 🐶✨</div>
       <div class="puppy-detail">went broke and came back. absolute sigma behavior.</div>
       <button class="ov-btn" id="puppy-close">ok bestie, keep grinding</button>
     </div>
   </div>
+
+  <!-- Zero coins: Dolly is devastated -->
   <div id="broke-overlay" class="hidden">
     <div id="broke-card">
       <div class="big-title">💀 COMPLETELY COOKED 💀</div>
-      <div class="broke-sub">bro went to zero. the dog is not okay about this.</div>
-      <img class="broke-photo" src="https://raw.githubusercontent.com/austendemo/SKO-Games/main/games/slot-machine/puppy2.png" alt="sad puppy" />
+      <div class="broke-sub">bro went to zero. Dolly is not okay about this.</div>
+      <img class="broke-photo" src="https://raw.githubusercontent.com/austendemo/SKO-Games/main/games/slot-machine/puppy2.png" alt="Dolly sad" />
       <div class="broke-msg">L + RATIO + WENT BROKE 💀</div>
-      <div class="broke-detail">your rizz has been fully revoked. press restart for a second chance.</div>
+      <div class="broke-detail">Dolly is disappointed. your rizz has been fully revoked. press restart for a second chance.</div>
       <button id="restart-btn">🔄 RESTART (cope)</button>
     </div>
   </div>
@@ -374,10 +380,11 @@
       '🎪 welcome to the circus (you are the AE) 🎪','🚀 to the moon but quota requires more spins 🚀',
       '💸 customer spinning detected. this is fine. 💸',
       '☠️ 1000 bet?? absolute deviant behavior ☠️','💀 bro really said \'yolo\' to their entire bankroll 💀',
+      '🐶 Dolly is watching. do not embarrass yourself. 🐶',
     ];
     const ALL_TWEETS=[
       {avatar:'🚢',name:'Brenda Kowalski',handle:'@brendak_cruising',tag:'tourist',body:'Day 4 of our Caribbean cruise and honestly having the TIME of my life 🌊 ignore the <span class="hashtag">#hantavirus</span> stuff my daughter keeps texting me about. The buffet is incredible!!',likes:'2.3K',rts:'891',replies:'4.1K',time:'2m ago'},
-      {avatar:'🏛️',name:'HHS Public Affairs',handle:'@HHSgov',verified:true,tag:'gov',body:'Regarding ongoing inquiries about <span class="hashtag">#Hantavirus</span>: We are aware of the situation. We are monitoring. Please do not contact this office directly. We cannot help you individually. Thank you for your understanding.',likes:'891',rts:'12.4K',replies:'31.2K',time:'4m ago'},
+      {avatar:'🏛️',name:'HHS Public Affairs',handle:'@HHSgov',verified:true,tag:'gov',body:'Regarding ongoing inquiries about <span class="hashtag">#Hantavirus</span>: We are aware of the situation. We are monitoring. Please do not contact this office directly. We cannot help you individually. Thank you.',likes:'891',rts:'12.4K',replies:'31.2K',time:'4m ago'},
       {avatar:'😱',name:'Jake from Omaha',handle:'@jakefromohiomaha',tag:'scared',body:'WHY IS NOBODY TALKING ABOUT THIS my neighbor\'s cousin\'s coworker said they saw a MOUSE on a cruise ship and now I\'m not going outside ever again <span class="hashtag">#hantavirus</span> <span class="hashtag">#StayHome</span>',likes:'47K',rts:'89K',replies:'2.1K',time:'6m ago'},
       {avatar:'🚢',name:'Royal Caribbean Fan',handle:'@RCL_fanboy2009',tag:'tourist',body:'Just got off the phone with Royal Caribbean. They said the <span class="hashtag">#hantavirus</span> concerns are "overblown" and our cruise departs Friday as scheduled ⛵ Can\'t wait!! Packing now!!',likes:'234',rts:'5.8K',replies:'9.3K',time:'11m ago'},
       {avatar:'🏛️',name:'CDC Communications',handle:'@CDCgov',verified:true,tag:'gov',body:'<span class="hashtag">#Hantavirus</span> update: We are still gathering data. Avoid rodents. Wash your hands. Do not DM us. Do not call us. We are doing our best. Please.',likes:'3.1K',rts:'18.7K',replies:'44K',time:'15m ago'},
@@ -514,7 +521,7 @@
     document.querySelectorAll('.bet-btn').forEach(btn=>btn.addEventListener('click',()=>{
       document.querySelectorAll('.bet-btn').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');currentBet=parseInt(btn.dataset.bet);
-      if(currentBet>=500)showMeme(currentBet===1000?'☠️ 1000 bet?? absolute deviant behavior ☠️':'💀 500 bet?? bro really said YOLO 💀');
+      if(currentBet>=500)showMeme(currentBet===1000?'☠️ 1000 bet?? absolute deviant behavior. Dolly is concerned. ☠️':'💀 500 bet?? bro really said YOLO 💀');
     }));
     document.getElementById('win-close').addEventListener('click',()=>{winOv.classList.add('hidden');reels.forEach(r=>r.classList.remove('winner'));});
     document.getElementById('lose-close').addEventListener('click',()=>loseOv.classList.add('hidden'));
@@ -525,7 +532,7 @@
       document.querySelectorAll('.bet-btn').forEach(b=>b.classList.remove('active'));
       document.querySelector('[data-bet="5"]').classList.add('active');
       reels.forEach(r=>r.classList.remove('winner'));brokeOv.classList.add('hidden');buildReels();
-      showMeme('🔄 RESTARTED. second chances are for real ones. 🔄');
+      showMeme('🔄 RESTARTED. Dolly forgives you. second chances are for real ones. 🔄');
     });
     document.addEventListener('keydown',e=>{if(e.code==='Space'&&!isSpinning){e.preventDefault();spin();}});
     setInterval(()=>{
