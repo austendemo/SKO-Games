@@ -145,15 +145,12 @@
       box-shadow:inset 0 0 20px rgba(0,0,0,0.8);
       transition: border-color 0.3s, box-shadow 0.3s;
     }
-    .reel-inner {
-      display:flex; flex-direction:column;
-    }
+    .reel-inner { display:flex; flex-direction:column; }
     .reel-symbol {
       width:100%; height:100px;
       display:flex; align-items:center;
       justify-content:center; font-size:3.5rem;
       flex-shrink:0; user-select:none;
-      transition: transform 0.1s;
     }
     #payline {
       height:3px;
@@ -188,16 +185,10 @@
       font-weight:700; cursor:pointer;
       transition:all 0.2s;
     }
-    .bet-btn:hover {
-      background:rgba(191,0,255,0.3);
-      border-color:var(--neon-purple);
-      transform:translateY(-2px);
-    }
+    .bet-btn:hover { background:rgba(191,0,255,0.3); border-color:var(--neon-purple); transform:translateY(-2px); }
     .bet-btn.active {
-      background:rgba(191,0,255,0.5);
-      border-color:var(--neon-purple);
-      box-shadow:0 0 12px rgba(191,0,255,0.5);
-      transform:translateY(-2px);
+      background:rgba(191,0,255,0.5); border-color:var(--neon-purple);
+      box-shadow:0 0 12px rgba(191,0,255,0.5); transform:translateY(-2px);
     }
     #controls { display:flex; gap:1rem; margin-bottom:1rem; flex-wrap:wrap; }
     #spin-btn,#max-btn {
@@ -210,13 +201,9 @@
     }
     #spin-btn {
       background:linear-gradient(135deg,var(--neon-pink),var(--neon-purple));
-      color:white;
-      box-shadow:0 4px 20px rgba(255,0,110,0.5);
+      color:white; box-shadow:0 4px 20px rgba(255,0,110,0.5);
     }
-    #spin-btn:hover:not(:disabled) {
-      transform:translateY(-3px) scale(1.02);
-      box-shadow:0 8px 30px rgba(255,0,110,0.7);
-    }
+    #spin-btn:hover:not(:disabled) { transform:translateY(-3px) scale(1.02); box-shadow:0 8px 30px rgba(255,0,110,0.7); }
     #spin-btn:disabled{opacity:0.5;cursor:not-allowed;}
     @keyframes btn-shake {
       0%,100%{transform:translateX(0);}
@@ -226,63 +213,40 @@
     #spin-btn.spinning{animation:btn-shake 0.2s ease-in-out infinite;}
     #max-btn {
       background:linear-gradient(135deg,var(--neon-yellow),#ff9500);
-      color:#0a0a0f;
-      box-shadow:0 4px 20px rgba(255,255,0,0.4);
+      color:#0a0a0f; box-shadow:0 4px 20px rgba(255,255,0,0.4);
     }
-    #max-btn:hover {
-      transform:translateY(-3px) scale(1.02);
-      box-shadow:0 8px 30px rgba(255,255,0,0.6);
-    }
+    #max-btn:hover { transform:translateY(-3px) scale(1.02); box-shadow:0 8px 30px rgba(255,255,0,0.6); }
     #result-display {
       text-align:center; min-height:2rem;
-      font-size:1.2rem; font-weight:900;
-      margin-bottom:1rem;
+      font-size:1.2rem; font-weight:900; margin-bottom:1rem;
     }
     #win-history {
-      background:var(--card-bg);
-      border:2px solid rgba(255,255,255,0.08);
-      border-radius:12px; padding:1rem;
-      margin-bottom:1.5rem;
+      background:var(--card-bg); border:2px solid rgba(255,255,255,0.08);
+      border-radius:12px; padding:1rem; margin-bottom:1.5rem;
     }
-    #win-history h3 {
-      font-family:'Bangers',cursive;
-      letter-spacing:0.05em; color:var(--neon-cyan);
-      margin-bottom:0.5rem; font-size:1rem;
-    }
+    #win-history h3 { font-family:'Bangers',cursive; letter-spacing:0.05em; color:var(--neon-cyan); margin-bottom:0.5rem; font-size:1rem; }
     #history-list {
-      list-style:none; max-height:120px;
-      overflow-y:auto; scrollbar-width:thin;
-      scrollbar-color:var(--neon-purple) transparent;
+      list-style:none; max-height:120px; overflow-y:auto;
+      scrollbar-width:thin; scrollbar-color:var(--neon-purple) transparent;
     }
     #history-list li {
-      padding:0.3rem 0;
-      border-bottom:1px solid rgba(255,255,255,0.05);
-      font-size:0.85rem; display:flex;
-      justify-content:space-between; align-items:center;
+      padding:0.3rem 0; border-bottom:1px solid rgba(255,255,255,0.05);
+      font-size:0.85rem; display:flex; justify-content:space-between; align-items:center;
     }
     #history-list li.win{color:var(--neon-green);}
     #history-list li.loss{color:#ff6b6b;}
     #paytable {
-      background:var(--card-bg);
-      border:2px solid rgba(255,255,255,0.08);
-      border-radius:12px; padding:1rem;
-      margin-bottom:2rem;
+      background:var(--card-bg); border:2px solid rgba(255,255,255,0.08);
+      border-radius:12px; padding:1rem; margin-bottom:2rem;
     }
-    #paytable h3 {
-      font-family:'Bangers',cursive;
-      letter-spacing:0.05em; color:var(--neon-yellow);
-      margin-bottom:0.75rem; font-size:1rem;
-    }
+    #paytable h3 { font-family:'Bangers',cursive; letter-spacing:0.05em; color:var(--neon-yellow); margin-bottom:0.75rem; font-size:1rem; }
     #paytable table{width:100%;border-collapse:collapse;font-size:0.85rem;}
-    #paytable th {
-      text-align:left; padding:0.4rem 0.5rem;
-      border-bottom:2px solid rgba(255,255,255,0.1);
-      color:var(--neon-purple); font-size:0.8rem;
-      text-transform:uppercase; letter-spacing:0.08em;
-    }
+    #paytable th { text-align:left; padding:0.4rem 0.5rem; border-bottom:2px solid rgba(255,255,255,0.1); color:var(--neon-purple); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.08em; }
     #paytable td{padding:0.35rem 0.5rem;border-bottom:1px solid rgba(255,255,255,0.05);}
     #paytable tr:hover td{background:rgba(255,255,255,0.03);}
-    #win-overlay,#lose-overlay {
+
+    /* ====== STANDARD OVERLAYS ====== */
+    #win-overlay,#lose-overlay,#puppy-overlay {
       position:fixed; inset:0;
       display:flex; align-items:center;
       justify-content:center; z-index:100;
@@ -318,14 +282,106 @@
     #win-text{color:var(--neon-green);}
     #lose-text{color:#ff6b6b;}
     #win-amount{font-size:1.3rem;font-weight:900;color:var(--neon-yellow);margin-bottom:1rem;}
-    #win-close,#lose-close {
+    #win-close,#lose-close,#puppy-close {
       background:linear-gradient(135deg,var(--neon-pink),var(--neon-purple));
       color:white; border:none; border-radius:12px;
       padding:0.75rem 2rem; font-family:'Bangers',cursive;
       font-size:1.2rem; letter-spacing:0.05em;
       cursor:pointer; transition:all 0.2s;
     }
-    #win-close:hover,#lose-close:hover{transform:translateY(-2px);box-shadow:0 5px 20px rgba(255,0,110,0.5);}
+    #win-close:hover,#lose-close:hover,#puppy-close:hover{transform:translateY(-2px);box-shadow:0 5px 20px rgba(255,0,110,0.5);}
+
+    /* ====== PUPPY 1000-COIN OVERLAY ====== */
+    #puppy-overlay {
+      background: radial-gradient(ellipse at center, rgba(255,200,0,0.3) 0%, rgba(255,0,110,0.2) 50%, rgba(191,0,255,0.25) 100%);
+      animation: overlay-pop 0.4s ease-out;
+      z-index: 150;
+    }
+    #puppy-content {
+      background: var(--card-bg);
+      border: 4px solid var(--neon-yellow);
+      border-radius: 28px;
+      padding: 2rem;
+      text-align: center;
+      max-width: 480px;
+      width: 92%;
+      box-shadow: 0 0 80px rgba(255,255,0,0.6), 0 0 160px rgba(255,0,110,0.3);
+      animation: puppy-bounce 0.6s cubic-bezier(0.175,0.885,0.32,1.275);
+      position: relative;
+      overflow: hidden;
+    }
+    @keyframes puppy-bounce {
+      0%   { transform: scale(0.3) rotate(-8deg); opacity:0; }
+      50%  { transform: scale(1.08) rotate(3deg); }
+      75%  { transform: scale(0.96) rotate(-1deg); }
+      100% { transform: scale(1) rotate(0); opacity:1; }
+    }
+    #puppy-content::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,0,0.05) 0%, transparent 50%, rgba(255,0,110,0.05) 100%);
+      pointer-events: none;
+    }
+    #puppy-title {
+      font-family: 'Bangers', cursive;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      letter-spacing: 0.06em;
+      background: linear-gradient(135deg, var(--neon-yellow), var(--neon-pink), var(--neon-cyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.3rem;
+      animation: title-pulse 1s ease-in-out infinite;
+    }
+    #puppy-subtitle {
+      font-size: 0.9rem;
+      color: var(--neon-cyan);
+      margin-bottom: 1.2rem;
+      font-weight: 700;
+    }
+    #puppy-img-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1.2rem;
+    }
+    #puppy-img {
+      width: 260px;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 4px solid var(--neon-yellow);
+      box-shadow: 0 0 40px rgba(255,255,0,0.5), 0 0 80px rgba(255,0,110,0.3);
+      animation: puppy-img-pulse 1s ease-in-out infinite alternate;
+      display: block;
+    }
+    @keyframes puppy-img-pulse {
+      from { box-shadow: 0 0 30px rgba(255,255,0,0.5), 0 0 60px rgba(255,0,110,0.2); transform: scale(1); }
+      to   { box-shadow: 0 0 60px rgba(255,255,0,0.8), 0 0 100px rgba(0,245,255,0.4); transform: scale(1.03); }
+    }
+    #puppy-img-wrapper::after {
+      content: '🐶✨🐶✨🐶';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.4rem;
+      background: var(--card-bg);
+      padding: 2px 8px;
+      border-radius: 20px;
+      border: 2px solid var(--neon-yellow);
+      white-space: nowrap;
+    }
+    #puppy-msg {
+      font-family: 'Bangers', cursive;
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+      color: var(--neon-green);
+      margin-bottom: 0.4rem;
+    }
+    #puppy-submsg {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1.5rem;
+    }
     .hidden{display:none!important;}
     .confetti {
       position:fixed; width:10px; height:10px;
@@ -407,6 +463,8 @@
       </table>
     </div>
   </div>
+
+  <!-- Standard overlays -->
   <div id="win-overlay" class="hidden">
     <div id="win-content">
       <div id="win-emoji"></div>
@@ -423,18 +481,35 @@
     </div>
   </div>
 
+  <!-- 🐶 1000-COIN PUPPY CELEBRATION OVERLAY -->
+  <div id="puppy-overlay" class="hidden">
+    <div id="puppy-content">
+      <div id="puppy-title">🐶 COMEBACK KING 🐶</div>
+      <div id="puppy-subtitle">you clawed back to 1000 rizz coins. the dog is proud of you. fr.</div>
+      <div id="puppy-img-wrapper">
+        <img id="puppy-img"
+             src="https://raw.githubusercontent.com/austendemo/SKO-Games/main/games/slot-machine/puppy.png"
+             alt="proud puppy"
+             onerror="this.style.fontSize='8rem';this.style.lineHeight='260px';this.style.width='260px';this.style.height='260px';this.style.border='none';this.style.boxShadow='none';this.outerHTML='<div style=&quot;font-size:8rem;line-height:260px;width:260px;height:260px;display:inline-block&quot;>🐶</div>'" />
+      </div>
+      <div id="puppy-msg">THE DOG BELIEVES IN YOU 🐶✨</div>
+      <div id="puppy-submsg">you started with 1000, went broke (mid), and came back. absolute sigma behavior.</div>
+      <button id="puppy-close">ok bestie, let's keep grinding</button>
+    </div>
+  </div>
+
   <script>
     const SYMBOLS = [
-      { emoji: '🗿', name: 'moai',    weight: 1 },
-      { emoji: '🐸', name: 'pepe',    weight: 2 },
-      { emoji: '💀', name: 'skull',   weight: 3 },
-      { emoji: '🔥', name: 'fire',    weight: 4 },
-      { emoji: '✨', name: 'sparkle', weight: 5 },
-      { emoji: '🚀', name: 'rocket',  weight: 6 },
-      { emoji: '🎭', name: 'mask',    weight: 7 },
-      { emoji: '🤡', name: 'clown',   weight: 8 },
-      { emoji: '😤', name: 'sigma',   weight: 8 },
-      { emoji: '🎪', name: 'circus',  weight: 9 },
+      { emoji:'🗿', name:'moai',    weight:1 },
+      { emoji:'🐸', name:'pepe',    weight:2 },
+      { emoji:'💀', name:'skull',   weight:3 },
+      { emoji:'🔥', name:'fire',    weight:4 },
+      { emoji:'✨', name:'sparkle', weight:5 },
+      { emoji:'🚀', name:'rocket',  weight:6 },
+      { emoji:'🎭', name:'mask',    weight:7 },
+      { emoji:'🤡', name:'clown',   weight:8 },
+      { emoji:'😤', name:'sigma',   weight:8 },
+      { emoji:'🎪', name:'circus',  weight:9 },
     ];
     const PAYOUTS = { moai:500, pepe:200, skull:150, fire:100, sparkle:75, rocket:50, mask:30 };
     const WIN_MESSAGES = [
@@ -461,7 +536,13 @@
       '🚀 to the moon but the rocket ran out of fuel 🚀',
     ];
 
-    let balance = 1000, currentBet = 10, isSpinning = false, history = [], spinCount = 0;
+    let balance = 1000;
+    let currentBet = 10;
+    let isSpinning = false;
+    let history = [];
+    let spinCount = 0;
+    let hasDippedBelow1000 = false; // track if balance ever went below 1000
+    let puppyShownThisRound = false; // don't spam the puppy
 
     const balanceEl   = document.getElementById('balance');
     const spinBtn     = document.getElementById('spin-btn');
@@ -470,153 +551,163 @@
     const memeBanner  = document.getElementById('meme-banner');
     const winOverlay  = document.getElementById('win-overlay');
     const loseOverlay = document.getElementById('lose-overlay');
+    const puppyOverlay= document.getElementById('puppy-overlay');
     const reelInners  = [1,2,3].map(i => document.getElementById('reel'+i+'-inner'));
     const reels       = [1,2,3].map(i => document.getElementById('reel'+i));
 
     function weightedRandom(arr) {
-      const total = arr.reduce((a,s) => a + s.w, 0);
-      let r = Math.random() * total;
-      for (const s of arr) { r -= s.w; if (r <= 0) return s.sym; }
+      const total = arr.reduce((a,s) => a+s.w, 0);
+      let r = Math.random()*total;
+      for(const s of arr){ r-=s.w; if(r<=0) return s.sym; }
       return arr[arr.length-1].sym;
     }
     function randomSymbol() {
-      const pool = SYMBOLS.map(s => ({ sym: s, w: 1/s.weight }));
-      return weightedRandom(pool);
+      return weightedRandom(SYMBOLS.map(s=>({sym:s,w:1/s.weight})));
     }
 
     function buildReels() {
-      reelInners.forEach(inner => {
-        inner.innerHTML = '';
-        inner.style.transform = '';
-        for (let i = 0; i < 5; i++) {
-          const s = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
-          const d = document.createElement('div');
-          d.className = 'reel-symbol'; d.textContent = s.emoji;
+      reelInners.forEach(inner=>{
+        inner.innerHTML=''; inner.style.transform='';
+        for(let i=0;i<5;i++){
+          const s=SYMBOLS[Math.floor(Math.random()*SYMBOLS.length)];
+          const d=document.createElement('div');
+          d.className='reel-symbol'; d.textContent=s.emoji;
           inner.appendChild(d);
         }
       });
     }
 
     function setReelSymbol(innerEl, sym) {
-      const all = innerEl.querySelectorAll('.reel-symbol');
-      all[2].textContent = sym.emoji; // middle = payline
-      all[0].textContent = SYMBOLS[Math.floor(Math.random()*SYMBOLS.length)].emoji;
-      all[1].textContent = SYMBOLS[Math.floor(Math.random()*SYMBOLS.length)].emoji;
-      all[3].textContent = SYMBOLS[Math.floor(Math.random()*SYMBOLS.length)].emoji;
-      all[4].textContent = SYMBOLS[Math.floor(Math.random()*SYMBOLS.length)].emoji;
+      const all=innerEl.querySelectorAll('.reel-symbol');
+      all[2].textContent=sym.emoji;
+      [0,1,3,4].forEach(i=>{ all[i].textContent=SYMBOLS[Math.floor(Math.random()*SYMBOLS.length)].emoji; });
     }
 
     function animateReel(idx, finalSym, spinDuration) {
-      return new Promise(resolve => {
-        const inner = reelInners[idx];
-        const startTime = performance.now();
-        let lastTick = startTime;
-        let pos = 0;
-
-        function tick(now) {
-          const elapsed = now - startTime;
-          const speed = elapsed < spinDuration - 300 ? 18 : Math.max(4, 18 * (1 - (elapsed - (spinDuration-300))/300));
-          pos += speed;
-          if (pos >= 100) pos -= 100;
-          inner.style.transform = `translateY(${pos}px)`;
-
-          // Randomise visible symbols while spinning fast
-          if (now - lastTick > 80 && elapsed < spinDuration - 200) {
-            inner.querySelectorAll('.reel-symbol').forEach(d => {
-              d.textContent = SYMBOLS[Math.floor(Math.random()*SYMBOLS.length)].emoji;
+      return new Promise(resolve=>{
+        const inner=reelInners[idx];
+        const startTime=performance.now();
+        let lastTick=startTime; let pos=0;
+        function tick(now){
+          const elapsed=now-startTime;
+          const speed=elapsed<spinDuration-300?18:Math.max(4,18*(1-(elapsed-(spinDuration-300))/300));
+          pos+=speed; if(pos>=100) pos-=100;
+          inner.style.transform=`translateY(${pos}px)`;
+          if(now-lastTick>80&&elapsed<spinDuration-200){
+            inner.querySelectorAll('.reel-symbol').forEach(d=>{
+              d.textContent=SYMBOLS[Math.floor(Math.random()*SYMBOLS.length)].emoji;
             });
-            lastTick = now;
+            lastTick=now;
           }
-
-          if (elapsed < spinDuration) {
-            requestAnimationFrame(tick);
-          } else {
-            inner.style.transform = '';
-            setReelSymbol(inner, finalSym);
-            resolve();
-          }
+          if(elapsed<spinDuration){ requestAnimationFrame(tick); }
+          else{ inner.style.transform=''; setReelSymbol(inner,finalSym); resolve(); }
         }
         requestAnimationFrame(tick);
       });
     }
 
     async function spin() {
-      if (isSpinning) return;
-      if (balance < currentBet) { showMeme('❌ broke behavior detected. zero rizz coins = zero spins ❌'); return; }
-      isSpinning = true; spinCount++;
-      balance -= currentBet; updateBalance();
-      spinBtn.disabled = true;
+      if(isSpinning) return;
+      if(balance<currentBet){ showMeme('❌ broke behavior detected. zero rizz coins = zero spins ❌'); return; }
+      isSpinning=true; spinCount++;
+      const prevBalance=balance;
+      balance-=currentBet; updateBalance();
+
+      // track if we've dipped below 1000
+      if(balance<1000) hasDippedBelow1000=true;
+
+      spinBtn.disabled=true;
       spinBtn.classList.add('spinning');
-      spinBtn.textContent = '🌀 SPINNING...';
-      reels.forEach(r => r.classList.remove('winner'));
+      spinBtn.textContent='🌀 SPINNING...';
+      reels.forEach(r=>r.classList.remove('winner'));
       spawnParticles();
 
-      const result = [randomSymbol(), randomSymbol(), randomSymbol()];
-
+      const result=[randomSymbol(),randomSymbol(),randomSymbol()];
       await Promise.all([
-        animateReel(0, result[0], 900),
-        animateReel(1, result[1], 1200),
-        animateReel(2, result[2], 1500),
+        animateReel(0,result[0],900),
+        animateReel(1,result[1],1200),
+        animateReel(2,result[2],1500),
       ]);
 
-      const [a,b,c] = result;
-      let payout = 0, isWin = false;
-      if (a.name===b.name && b.name===c.name) {
-        payout = currentBet * (PAYOUTS[a.name] || 10); isWin = true;
-        reels.forEach(r => r.classList.add('winner'));
-      } else if (a.name===b.name || b.name===c.name || a.name===c.name) {
-        payout = currentBet * 2; isWin = true;
-        reels.forEach((r,i) => {
-          if ((i===0&&(a.name===b.name||a.name===c.name))||(i===1&&(a.name===b.name||b.name===c.name))||(i===2&&(a.name===c.name||b.name===c.name)))
+      const [a,b,c]=result;
+      let payout=0, isWin=false;
+      if(a.name===b.name&&b.name===c.name){
+        payout=currentBet*(PAYOUTS[a.name]||10); isWin=true;
+        reels.forEach(r=>r.classList.add('winner'));
+      } else if(a.name===b.name||b.name===c.name||a.name===c.name){
+        payout=currentBet*2; isWin=true;
+        reels.forEach((r,i)=>{
+          if((i===0&&(a.name===b.name||a.name===c.name))||(i===1&&(a.name===b.name||b.name===c.name))||(i===2&&(a.name===c.name||b.name===c.name)))
             r.classList.add('winner');
         });
       }
-      if (isWin) { balance += payout; updateBalance(); recordHistory(result,payout,true); setTimeout(()=>showWin(payout),300); }
-      else { recordHistory(result,0,false); setTimeout(()=>showLoss(),300); }
-      if (spinCount%5===0) showMeme(MEME_BANNERS[Math.floor(Math.random()*MEME_BANNERS.length)]);
 
-      spinBtn.disabled = false;
+      if(isWin){
+        balance+=payout; updateBalance();
+        recordHistory(result,payout,true);
+
+        // 🐶 PUPPY MILESTONE: crossed back to 1000 after going below
+        if(hasDippedBelow1000 && balance>=1000 && prevBalance-currentBet<1000 && !puppyShownThisRound){
+          puppyShownThisRound=true;
+          hasDippedBelow1000=false; // reset so it can fire again next time
+          setTimeout(()=>showPuppy(),400);
+        } else {
+          setTimeout(()=>showWin(payout),300);
+        }
+      } else {
+        recordHistory(result,0,false);
+        setTimeout(()=>showLoss(),300);
+      }
+
+      if(spinCount%5===0) showMeme(MEME_BANNERS[Math.floor(Math.random()*MEME_BANNERS.length)]);
+      spinBtn.disabled=false;
       spinBtn.classList.remove('spinning');
-      spinBtn.textContent = '🎰 SPIN (no cap)';
-      isSpinning = false;
+      spinBtn.textContent='🎰 SPIN (no cap)';
+      isSpinning=false;
     }
 
-    function updateBalance() {
-      balanceEl.textContent = balance.toLocaleString();
+    function updateBalance(){
+      balanceEl.textContent=balance.toLocaleString();
     }
-    function showMeme(msg) {
-      memeBanner.textContent = msg;
+    function showMeme(msg){
+      memeBanner.textContent=msg;
       memeBanner.classList.remove('hidden');
       memeBanner.style.animation='none'; void memeBanner.offsetWidth;
       memeBanner.style.animation='banner-shake 0.5s ease-in-out';
       setTimeout(()=>memeBanner.classList.add('hidden'),4000);
     }
-    function showWin(amount) {
-      const msg = WIN_MESSAGES[Math.floor(Math.random()*WIN_MESSAGES.length)];
-      document.getElementById('win-emoji').textContent = msg.emoji;
-      document.getElementById('win-text').textContent  = msg.text;
-      document.getElementById('win-amount').textContent = '+'+amount.toLocaleString()+' RIZZ COINS 💰';
+    function showWin(amount){
+      const msg=WIN_MESSAGES[Math.floor(Math.random()*WIN_MESSAGES.length)];
+      document.getElementById('win-emoji').textContent=msg.emoji;
+      document.getElementById('win-text').textContent=msg.text;
+      document.getElementById('win-amount').textContent='+'+amount.toLocaleString()+' RIZZ COINS 💰';
       winOverlay.classList.remove('hidden');
       spawnConfetti();
     }
-    function showLoss() {
-      const msg = LOSE_MESSAGES[Math.floor(Math.random()*LOSE_MESSAGES.length)];
-      document.getElementById('lose-emoji').textContent = msg.emoji;
-      document.getElementById('lose-text').textContent  = msg.text;
+    function showLoss(){
+      const msg=LOSE_MESSAGES[Math.floor(Math.random()*LOSE_MESSAGES.length)];
+      document.getElementById('lose-emoji').textContent=msg.emoji;
+      document.getElementById('lose-text').textContent=msg.text;
       loseOverlay.classList.remove('hidden');
     }
-    function recordHistory(result, payout, win) {
-      history.unshift({ emojis: result.map(r=>r.emoji).join(' '), payout, bet:currentBet, win });
-      if (history.length>20) history.pop();
-      historyList.innerHTML = history.map(h=>{
+    function showPuppy(){
+      puppyOverlay.classList.remove('hidden');
+      spawnConfetti();
+      // Extra mega confetti for the puppy moment
+      setTimeout(spawnConfetti, 600);
+      setTimeout(spawnConfetti, 1200);
+    }
+    function recordHistory(result,payout,win){
+      history.unshift({emojis:result.map(r=>r.emoji).join(' '),payout,bet:currentBet,win});
+      if(history.length>20) history.pop();
+      historyList.innerHTML=history.map(h=>{
         const cls=h.win?'win':'loss';
         const lbl=h.win?'W +'+h.payout.toLocaleString()+' 🤑':'L -'+h.bet+' 💀';
         return '<li class="'+cls+'"><span>'+h.emojis+'</span><span>'+lbl+'</span></li>';
       }).join('');
     }
-
-    function spawnParticles() {
-      const container = document.getElementById('particles');
+    function spawnParticles(){
+      const container=document.getElementById('particles');
       const emojis=['💸','⭐','🌟','✨','💫','🎉','🎊','🔥','💎'];
       for(let i=0;i<12;i++){
         setTimeout(()=>{
@@ -625,12 +716,11 @@
           p.style.left=Math.random()*100+'vw';
           p.style.animationDuration=(2+Math.random()*3)+'s';
           p.style.fontSize=(1+Math.random()*1.5)+'rem';
-          container.appendChild(p);
-          setTimeout(()=>p.remove(),5000);
+          container.appendChild(p); setTimeout(()=>p.remove(),5000);
         },i*80);
       }
     }
-    function spawnConfetti() {
+    function spawnConfetti(){
       const colors=['#ff006e','#00f5ff','#ffff00','#39ff14','#bf00ff','#ff9500'];
       for(let i=0;i<80;i++){
         setTimeout(()=>{
@@ -640,14 +730,13 @@
           c.style.width=(6+Math.random()*8)+'px'; c.style.height=c.style.width;
           c.style.setProperty('--drift',(Math.random()*200-100)+'px');
           c.style.animationDuration=(2+Math.random()*3)+'s';
-          document.body.appendChild(c);
-          setTimeout(()=>c.remove(),5000);
+          document.body.appendChild(c); setTimeout(()=>c.remove(),5000);
         },i*25);
       }
     }
 
-    spinBtn.addEventListener('click', spin);
-    maxBtn.addEventListener('click', ()=>{
+    spinBtn.addEventListener('click',spin);
+    maxBtn.addEventListener('click',()=>{
       document.querySelectorAll('.bet-btn').forEach(b=>b.classList.remove('active'));
       document.querySelector('[data-bet="250"]').classList.add('active');
       currentBet=250;
@@ -665,7 +754,14 @@
       reels.forEach(r=>r.classList.remove('winner'));
     });
     document.getElementById('lose-close').addEventListener('click',()=>loseOverlay.classList.add('hidden'));
-    document.addEventListener('keydown',e=>{ if(e.code==='Space'&&!isSpinning){e.preventDefault();spin();} });
+    document.getElementById('puppy-close').addEventListener('click',()=>{
+      puppyOverlay.classList.add('hidden');
+      puppyShownThisRound=false; // allow future comebacks to show the puppy again
+      reels.forEach(r=>r.classList.remove('winner'));
+    });
+    document.addEventListener('keydown',e=>{
+      if(e.code==='Space'&&!isSpinning){e.preventDefault();spin();}
+    });
 
     // Ambient particles
     setInterval(()=>{
