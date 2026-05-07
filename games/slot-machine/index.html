@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIGMA SLOTS 🎰💀</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="particles"></div>
+
+  <div id="app">
+    <header>
+      <div id="title-wrapper">
+        <h1 id="title">🎰 SIGMA SLOTS 🎰</h1>
+        <p id="subtitle">no cap, this is the ONLY slot machine that matters fr fr</p>
+      </div>
+      <div id="balance-display">
+        <span>💰 RIZZ COINS:</span>
+        <span id="balance">1000</span>
+      </div>
+    </header>
+
+    <div id="meme-banner" class="hidden"></div>
+
+    <div id="machine">
+      <div id="machine-top">
+        <div class="light" id="l1"></div>
+        <div class="light" id="l2"></div>
+        <div class="light" id="l3"></div>
+        <div class="light" id="l4"></div>
+        <div class="light" id="l5"></div>
+      </div>
+
+      <div id="reels-container">
+        <div class="reel-wrapper">
+          <div class="reel" id="reel1">
+            <div class="reel-inner" id="reel1-inner"></div>
+          </div>
+        </div>
+        <div class="reel-wrapper">
+          <div class="reel" id="reel2">
+            <div class="reel-inner" id="reel2-inner"></div>
+          </div>
+        </div>
+        <div class="reel-wrapper">
+          <div class="reel" id="reel3">
+            <div class="reel-inner" id="reel3-inner"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="payline"></div>
+    </div>
+
+    <div id="bet-section">
+      <label>BET (rizz per spin):</label>
+      <div id="bet-buttons">
+        <button class="bet-btn active" data-bet="10">10</button>
+        <button class="bet-btn" data-bet="25">25</button>
+        <button class="bet-btn" data-bet="50">50</button>
+        <button class="bet-btn" data-bet="100">100</button>
+        <button class="bet-btn" data-bet="250">250 (YOLO)</button>
+      </div>
+    </div>
+
+    <div id="controls">
+      <button id="spin-btn">🎰 SPIN (no cap)</button>
+      <button id="max-btn">💯 MAX BET (sigma move)</button>
+    </div>
+
+    <div id="result-display"></div>
+
+    <div id="win-history">
+      <h3>📜 RECENT W's AND L's</h3>
+      <ul id="history-list"></ul>
+    </div>
+
+    <div id="paytable">
+      <h3>💸 PAY TABLE (study this, king/queen)</h3>
+      <table>
+        <tr><th>Combo</th><th>Payout</th><th>Vibe</th></tr>
+        <tr><td>🗿🗿🗿</td><td>500x</td><td>GIGACHAD MOMENT</td></tr>
+        <tr><td>🐸🐸🐸</td><td>200x</td><td>RARE PEPE FOUND</td></tr>
+        <tr><td>💀💀💀</td><td>150x</td><td>literally dead fr</td></tr>
+        <tr><td>🔥🔥🔥</td><td>100x</td><td>fire hazard W</td></tr>
+        <tr><td>✨✨✨</td><td>75x</td><td>slay bestie</td></tr>
+        <tr><td>🚀🚀🚀</td><td>50x</td><td>to the moon (cope)</td></tr>
+        <tr><td>🎭🎭🎭</td><td>30x</td><td>NPC behavior unlocked</td></tr>
+        <tr><td>Any 2 match</td><td>2x</td><td>mid</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div id="win-overlay" class="hidden">
+    <div id="win-content">
+      <div id="win-emoji"></div>
+      <div id="win-text"></div>
+      <div id="win-amount"></div>
+      <button id="win-close">aight bet, collect W</button>
+    </div>
+  </div>
+
+  <div id="lose-overlay" class="hidden">
+    <div id="lose-content">
+      <div id="lose-emoji"></div>
+      <div id="lose-text"></div>
+      <button id="lose-close">rip bozo, keep going</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
