@@ -13,6 +13,7 @@
       --neon-yellow: #ffff00; --neon-green: #39ff14;
       --neon-purple: #bf00ff; --dark-bg: #0a0a0f;
       --card-bg: #12121f; --reel-bg: #0d0d1a;
+      --twitter-bg: #111927;
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
@@ -25,7 +26,7 @@
     #particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden;}
     .particle{position:absolute;font-size:1.5rem;animation:float-up linear infinite;opacity:0;}
     @keyframes float-up{0%{transform:translateY(100vh) rotate(0);opacity:1;}100%{transform:translateY(-10vh) rotate(720deg);opacity:0;}}
-    #app{position:relative;z-index:1;max-width:800px;margin:0 auto;padding:1rem;}
+    #app{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:1rem;}
     header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;}
     #title{
       font-family:'Bangers',cursive;font-size:clamp(2rem,6vw,3.5rem);letter-spacing:.05em;
@@ -119,28 +120,72 @@
     #history-list li{padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.85rem;display:flex;justify-content:space-between;align-items:center;}
     #history-list li.win{color:var(--neon-green);}
     #history-list li.loss{color:#ff6b6b;}
-    #paytable{background:var(--card-bg);border:2px solid rgba(255,255,255,.08);border-radius:12px;padding:1rem;margin-bottom:2rem;}
+    #paytable{background:var(--card-bg);border:2px solid rgba(255,255,255,.08);border-radius:12px;padding:1rem;margin-bottom:1.5rem;}
     #paytable h3{font-family:'Bangers',cursive;letter-spacing:.05em;color:var(--neon-yellow);margin-bottom:.75rem;font-size:1rem;}
     #paytable table{width:100%;border-collapse:collapse;font-size:.85rem;}
     #paytable th{text-align:left;padding:.4rem .5rem;border-bottom:2px solid rgba(255,255,255,.1);color:var(--neon-purple);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;}
     #paytable td{padding:.35rem .5rem;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:middle;}
     #paytable tr:hover td{background:rgba(255,255,255,.03);}
     .pt-logo{width:28px;height:28px;object-fit:contain;border-radius:6px;background:white;padding:2px;vertical-align:middle;margin-right:6px;}
-    .pt-fallback{width:28px;height:28px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:.6rem;color:white;vertical-align:middle;margin-right:6px;}
+
+    /* ====== TWITTER FEED ====== */
+    #twitter-feed{
+      background:var(--twitter-bg);border:2px solid #1d9bf0;
+      border-radius:16px;padding:1rem;margin-bottom:2rem;
+      box-shadow:0 0 20px rgba(29,155,240,.25);
+    }
+    #twitter-header{
+      display:flex;align-items:center;gap:.6rem;
+      margin-bottom:1rem;border-bottom:1px solid rgba(29,155,240,.25);padding-bottom:.75rem;
+    }
+    #twitter-header .x-logo{font-size:1.4rem;font-weight:900;color:white;}
+    #twitter-header h3{font-family:'Bangers',cursive;letter-spacing:.05em;color:#1d9bf0;font-size:1rem;flex:1;}
+    #live-badge{
+      background:#ff0033;color:white;font-size:.65rem;font-weight:900;
+      padding:.2rem .5rem;border-radius:20px;text-transform:uppercase;letter-spacing:.08em;
+      animation:live-pulse 1s ease-in-out infinite;
+    }
+    @keyframes live-pulse{0%,100%{opacity:1;}50%{opacity:.5;}}
+    #tweet-list{display:flex;flex-direction:column;gap:.75rem;}
+    .tweet{
+      background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+      border-radius:12px;padding:.75rem 1rem;
+      animation:tweet-slide-in .4s ease-out;
+    }
+    .tweet.new{border-color:rgba(29,155,240,.4);background:rgba(29,155,240,.06);animation:tweet-slide-in .4s ease-out,tweet-highlight 2s ease-out;}
+    @keyframes tweet-slide-in{from{transform:translateX(-10px);opacity:0;}to{transform:translateX(0);opacity:1;}}
+    @keyframes tweet-highlight{0%,100%{background:rgba(29,155,240,.06);}20%{background:rgba(29,155,240,.15);}}
+    .tweet-meta{display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem;}
+    .tweet-avatar{
+      width:32px;height:32px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-size:1rem;flex-shrink:0;
+    }
+    .tweet-name{font-weight:900;font-size:.85rem;}
+    .tweet-handle{font-size:.75rem;color:rgba(255,255,255,.45);}
+    .tweet-verified{color:#1d9bf0;font-size:.75rem;}
+    .tweet-time{margin-left:auto;font-size:.7rem;color:rgba(255,255,255,.35);}
+    .tweet-body{font-size:.85rem;line-height:1.45;color:rgba(255,255,255,.9);}
+    .tweet-body .hashtag{color:#1d9bf0;}
+    .tweet-body .mention{color:#1d9bf0;}
+    .tweet-stats{display:flex;gap:1rem;margin-top:.5rem;font-size:.72rem;color:rgba(255,255,255,.4);}
+    .tweet-stats span{cursor:default;}
+    .tweet-bio-tag{
+      display:inline-block;font-size:.6rem;font-weight:900;
+      padding:.15rem .4rem;border-radius:6px;margin-left:.4rem;
+      text-transform:uppercase;letter-spacing:.06em;
+    }
+    .gov{background:rgba(29,155,240,.3);color:#7ac9ff;}
+    .tourist{background:rgba(255,165,0,.3);color:#ffd280;}
+    .scared{background:rgba(255,50,50,.3);color:#ff9999;}
+    .chaos{background:rgba(191,0,255,.3);color:#e080ff;}
 
     /* ====== OVERLAYS ====== */
-    .overlay{
-      position:fixed;inset:0;display:flex;align-items:center;
-      justify-content:center;z-index:100;backdrop-filter:blur(8px);
-    }
+    .overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:100;backdrop-filter:blur(8px);}
     #win-overlay{background:rgba(0,255,100,.15);animation:overlay-pop .3s ease-out;}
     #lose-overlay{background:rgba(255,0,50,.15);animation:overlay-pop .3s ease-out;}
     @keyframes overlay-pop{0%{opacity:0;transform:scale(.9);}100%{opacity:1;transform:scale(1);}}
-    .overlay-card{
-      background:var(--card-bg);border-radius:24px;padding:2.5rem;
-      text-align:center;max-width:420px;width:90%;
-      animation:content-bounce .5s cubic-bezier(.175,.885,.32,1.275);
-    }
+    .overlay-card{background:var(--card-bg);border-radius:24px;padding:2.5rem;text-align:center;max-width:420px;width:90%;animation:content-bounce .5s cubic-bezier(.175,.885,.32,1.275);}
     #win-overlay .overlay-card{border:3px solid var(--neon-green);box-shadow:0 0 50px rgba(57,255,20,.5);}
     #lose-overlay .overlay-card{border:3px solid #ff6b6b;box-shadow:0 0 50px rgba(255,107,107,.4);}
     @keyframes content-bounce{0%{transform:scale(.5) rotate(-5deg);opacity:0;}60%{transform:scale(1.05) rotate(2deg);}80%{transform:scale(.97) rotate(-1deg);}100%{transform:scale(1) rotate(0);opacity:1;}}
@@ -150,86 +195,27 @@
     #win-overlay .ov-title{color:var(--neon-green);}
     #lose-overlay .ov-title{color:#ff6b6b;}
     #win-amount{font-size:1.3rem;font-weight:900;color:var(--neon-yellow);margin-bottom:1rem;}
-    .ov-btn{
-      background:linear-gradient(135deg,var(--neon-pink),var(--neon-purple));
-      color:white;border:none;border-radius:12px;padding:.75rem 2rem;
-      font-family:'Bangers',cursive;font-size:1.2rem;letter-spacing:.05em;
-      cursor:pointer;transition:all .2s;
-    }
+    .ov-btn{background:linear-gradient(135deg,var(--neon-pink),var(--neon-purple));color:white;border:none;border-radius:12px;padding:.75rem 2rem;font-family:'Bangers',cursive;font-size:1.2rem;letter-spacing:.05em;cursor:pointer;transition:all .2s;}
     .ov-btn:hover{transform:translateY(-2px);box-shadow:0 5px 20px rgba(255,0,110,.5);}
-
-    /* ====== PUPPY (1000 comeback) OVERLAY ====== */
-    #puppy-overlay{
-      position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
-      z-index:150;backdrop-filter:blur(8px);
-      background:radial-gradient(ellipse at center,rgba(255,200,0,.3) 0%,rgba(255,0,110,.2) 50%,rgba(191,0,255,.25) 100%);
-      animation:overlay-pop .4s ease-out;
-    }
-    #puppy-card{
-      background:var(--card-bg);border:4px solid var(--neon-yellow);
-      border-radius:28px;padding:2rem;text-align:center;
-      max-width:460px;width:92%;
-      box-shadow:0 0 80px rgba(255,255,0,.6),0 0 160px rgba(255,0,110,.3);
-      animation:puppy-bounce .6s cubic-bezier(.175,.885,.32,1.275);
-    }
+    #puppy-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:150;backdrop-filter:blur(8px);background:radial-gradient(ellipse at center,rgba(255,200,0,.3) 0%,rgba(255,0,110,.2) 50%,rgba(191,0,255,.25) 100%);animation:overlay-pop .4s ease-out;}
+    #puppy-card{background:var(--card-bg);border:4px solid var(--neon-yellow);border-radius:28px;padding:2rem;text-align:center;max-width:460px;width:92%;box-shadow:0 0 80px rgba(255,255,0,.6),0 0 160px rgba(255,0,110,.3);animation:puppy-bounce .6s cubic-bezier(.175,.885,.32,1.275);}
     @keyframes puppy-bounce{0%{transform:scale(.3) rotate(-8deg);opacity:0;}50%{transform:scale(1.08) rotate(3deg);}75%{transform:scale(.96) rotate(-1deg);}100%{transform:scale(1) rotate(0);opacity:1;}}
-    #puppy-card .big-title{
-      font-family:'Bangers',cursive;font-size:clamp(1.8rem,5vw,2.6rem);letter-spacing:.06em;
-      background:linear-gradient(135deg,var(--neon-yellow),var(--neon-pink),var(--neon-cyan));
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-      margin-bottom:.3rem;animation:title-pulse 1s ease-in-out infinite;
-    }
+    #puppy-card .big-title{font-family:'Bangers',cursive;font-size:clamp(1.8rem,5vw,2.6rem);letter-spacing:.06em;background:linear-gradient(135deg,var(--neon-yellow),var(--neon-pink),var(--neon-cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.3rem;animation:title-pulse 1s ease-in-out infinite;}
     .puppy-sub{font-size:.85rem;color:var(--neon-cyan);margin-bottom:1rem;font-weight:700;}
-    .puppy-photo{
-      width:240px;height:240px;object-fit:cover;border-radius:20px;
-      border:4px solid var(--neon-yellow);
-      box-shadow:0 0 40px rgba(255,255,0,.5),0 0 80px rgba(255,0,110,.3);
-      animation:puppy-pulse 1s ease-in-out infinite alternate;display:block;margin:0 auto 1rem;
-    }
+    .puppy-photo{width:240px;height:240px;object-fit:cover;border-radius:20px;border:4px solid var(--neon-yellow);box-shadow:0 0 40px rgba(255,255,0,.5),0 0 80px rgba(255,0,110,.3);animation:puppy-pulse 1s ease-in-out infinite alternate;display:block;margin:0 auto 1rem;}
     @keyframes puppy-pulse{from{box-shadow:0 0 30px rgba(255,255,0,.5),0 0 60px rgba(255,0,110,.2);transform:scale(1);}to{box-shadow:0 0 60px rgba(255,255,0,.8),0 0 100px rgba(0,245,255,.4);transform:scale(1.03);}}
     .puppy-msg{font-family:'Bangers',cursive;font-size:1.4rem;letter-spacing:.05em;color:var(--neon-green);margin-bottom:.3rem;}
     .puppy-detail{font-size:.8rem;color:rgba(255,255,255,.65);margin-bottom:1.2rem;}
-
-    /* ====== BROKE (0 coins) OVERLAY ====== */
-    #broke-overlay{
-      position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
-      z-index:150;backdrop-filter:blur(10px);
-      background:radial-gradient(ellipse at center,rgba(255,0,50,.3) 0%,rgba(100,0,0,.4) 100%);
-      animation:overlay-pop .4s ease-out;
-    }
-    #broke-card{
-      background:var(--card-bg);border:4px solid #ff3333;
-      border-radius:28px;padding:2rem;text-align:center;
-      max-width:460px;width:92%;
-      box-shadow:0 0 80px rgba(255,50,50,.6),0 0 160px rgba(255,0,0,.3);
-      animation:puppy-bounce .6s cubic-bezier(.175,.885,.32,1.275);
-    }
-    #broke-card .big-title{
-      font-family:'Bangers',cursive;font-size:clamp(1.8rem,5vw,2.6rem);letter-spacing:.06em;
-      color:#ff3333;
-      text-shadow:0 0 20px rgba(255,50,50,.8);
-      margin-bottom:.3rem;
-    }
+    #broke-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:150;backdrop-filter:blur(10px);background:radial-gradient(ellipse at center,rgba(255,0,50,.3) 0%,rgba(100,0,0,.4) 100%);animation:overlay-pop .4s ease-out;}
+    #broke-card{background:var(--card-bg);border:4px solid #ff3333;border-radius:28px;padding:2rem;text-align:center;max-width:460px;width:92%;box-shadow:0 0 80px rgba(255,50,50,.6),0 0 160px rgba(255,0,0,.3);animation:puppy-bounce .6s cubic-bezier(.175,.885,.32,1.275);}
+    #broke-card .big-title{font-family:'Bangers',cursive;font-size:clamp(1.8rem,5vw,2.6rem);letter-spacing:.06em;color:#ff3333;text-shadow:0 0 20px rgba(255,50,50,.8);margin-bottom:.3rem;}
     .broke-sub{font-size:.85rem;color:#ff8888;margin-bottom:1rem;font-weight:700;}
-    .broke-photo{
-      width:240px;height:240px;object-fit:cover;border-radius:20px;
-      border:4px solid #ff3333;
-      box-shadow:0 0 40px rgba(255,50,50,.5);
-      display:block;margin:0 auto 1rem;
-      animation:broke-wobble 2s ease-in-out infinite;
-    }
+    .broke-photo{width:240px;height:240px;object-fit:cover;border-radius:20px;border:4px solid #ff3333;box-shadow:0 0 40px rgba(255,50,50,.5);display:block;margin:0 auto 1rem;animation:broke-wobble 2s ease-in-out infinite;}
     @keyframes broke-wobble{0%,100%{transform:rotate(-2deg);}50%{transform:rotate(2deg);}}
     .broke-msg{font-family:'Bangers',cursive;font-size:1.4rem;letter-spacing:.05em;color:#ff6666;margin-bottom:.3rem;}
     .broke-detail{font-size:.8rem;color:rgba(255,255,255,.55);margin-bottom:1.2rem;}
-    #restart-btn{
-      background:linear-gradient(135deg,#ff3333,#ff6600);
-      color:white;border:none;border-radius:12px;padding:.75rem 2rem;
-      font-family:'Bangers',cursive;font-size:1.2rem;letter-spacing:.05em;
-      cursor:pointer;transition:all .2s;
-      box-shadow:0 4px 20px rgba(255,50,50,.4);
-    }
+    #restart-btn{background:linear-gradient(135deg,#ff3333,#ff6600);color:white;border:none;border-radius:12px;padding:.75rem 2rem;font-family:'Bangers',cursive;font-size:1.2rem;letter-spacing:.05em;cursor:pointer;transition:all .2s;box-shadow:0 4px 20px rgba(255,50,50,.4);}
     #restart-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,50,50,.7);}
-
     .hidden{display:none!important;}
     .confetti{position:fixed;width:10px;height:10px;top:-10px;animation:confetti-fall linear forwards;z-index:200;pointer-events:none;border-radius:2px;}
     @keyframes confetti-fall{0%{transform:translateY(0) rotate(0) translateX(0);opacity:1;}100%{transform:translateY(110vh) rotate(720deg) translateX(var(--drift));opacity:0;}}
@@ -241,13 +227,13 @@
   <div id="particles"></div>
   <div id="app">
     <header>
-      <div id="title-wrapper">
+      <div>
         <h1 id="title">🎰 SIGMA SLOTS 🎰</h1>
         <p id="subtitle">spin your customers. no cap.</p>
       </div>
       <div id="balance-display">
         <span>💰 RIZZ COINS:</span>
-        <span id="balance">1000</span>
+        <span id="balance">100</span>
       </div>
     </header>
     <div id="meme-banner" class="hidden"></div>
@@ -266,11 +252,10 @@
     <div id="bet-section">
       <label>BET (rizz per spin):</label>
       <div id="bet-buttons">
-        <button class="bet-btn active" data-bet="10">10</button>
+        <button class="bet-btn active" data-bet="5">5</button>
+        <button class="bet-btn" data-bet="10">10</button>
         <button class="bet-btn" data-bet="25">25</button>
-        <button class="bet-btn" data-bet="50">50</button>
-        <button class="bet-btn" data-bet="100">100</button>
-        <button class="bet-btn" data-bet="250">250 (YOLO)</button>
+        <button class="bet-btn" data-bet="50">50 (YOLO)</button>
       </div>
     </div>
     <div id="controls">
@@ -288,6 +273,16 @@
         <tr><th>Customer</th><th>Payout</th><th>Vibe</th></tr>
       </table>
     </div>
+
+    <!-- HANTAVIRUS LIVE FEED -->
+    <div id="twitter-feed">
+      <div id="twitter-header">
+        <span class="x-logo">𝕏</span>
+        <h3>LIVE: #Hantavirus is trending 🐭☣️</h3>
+        <span id="live-badge">● LIVE</span>
+      </div>
+      <div id="tweet-list"></div>
+    </div>
   </div>
 
   <!-- Win overlay -->
@@ -299,8 +294,7 @@
       <button class="ov-btn" id="win-close">aight bet, collect W</button>
     </div>
   </div>
-
-  <!-- Lose overlay (per-spin, not game-over) -->
+  <!-- Lose overlay -->
   <div id="lose-overlay" class="overlay hidden">
     <div class="overlay-card">
       <div class="ov-emoji" id="lose-emoji"></div>
@@ -308,385 +302,318 @@
       <button class="ov-btn" id="lose-close">rip bozo, keep going</button>
     </div>
   </div>
-
   <!-- 1000-coin comeback puppy -->
   <div id="puppy-overlay" class="hidden">
     <div id="puppy-card">
       <div class="big-title">🐶 COMEBACK KING 🐶</div>
       <div class="puppy-sub">you clawed back to 1000 rizz coins. the dog is proud.</div>
-      <img class="puppy-photo"
-        src="https://raw.githubusercontent.com/austendemo/SKO-Games/main/games/slot-machine/puppy.png"
-        alt="proud puppy"
-        onerror="this.style.fontSize='6rem';this.style.lineHeight='240px';this.textContent='🐶';" />
+      <img class="puppy-photo" src="https://raw.githubusercontent.com/austendemo/SKO-Games/main/games/slot-machine/puppy.png" alt="proud puppy" onerror="this.style.fontSize='6rem';this.style.lineHeight='240px';this.textContent='🐶';" />
       <div class="puppy-msg">THE DOG BELIEVES IN YOU 🐶✨</div>
       <div class="puppy-detail">went broke and came back. absolute sigma behavior.</div>
       <button class="ov-btn" id="puppy-close">ok bestie, keep grinding</button>
     </div>
   </div>
-
   <!-- ZERO COINS broke puppy -->
   <div id="broke-overlay" class="hidden">
     <div id="broke-card">
       <div class="big-title">💀 COMPLETELY COOKED 💀</div>
       <div class="broke-sub">bro went to zero. the dog is not okay about this.</div>
-      <img class="broke-photo"
-        src="https://raw.githubusercontent.com/austendemo/SKO-Games/main/games/slot-machine/puppy2.png"
-        alt="sad puppy"
-        onerror="this.style.fontSize='6rem';this.style.lineHeight='240px';this.textContent='😭';" />
+      <img class="broke-photo" src="https://raw.githubusercontent.com/austendemo/SKO-Games/main/games/slot-machine/puppy2.png" alt="sad puppy" onerror="this.style.fontSize='6rem';this.style.lineHeight='240px';this.textContent='😭';" />
       <div class="broke-msg">L + RATIO + WENT BROKE 💀</div>
-      <div class="broke-detail">your rizz has been fully revoked. press restart for a second chance (you don't deserve it but ok).</div>
+      <div class="broke-detail">your rizz has been fully revoked. press restart for a second chance.</div>
       <button id="restart-btn">🔄 RESTART (cope)</button>
     </div>
   </div>
 
   <script>
-    // ====== CUSTOMER SYMBOLS ======
     const CLR = 'https://logo.clearbit.com/';
     const SYMBOLS = [
-      { name:'Abridge',    domain:'abridge.com',          color:'#6B48FF', weight:1  },
-      { name:'Sublime',    domain:'sublimesecurity.com',  color:'#FF4500', weight:2  },
-      { name:'Reka AI',    domain:'reka.ai',              color:'#00C4CC', weight:3  },
-      { name:'Tecovas',    domain:'tecovas.com',          color:'#8B4513', weight:4  },
-      { name:'Yotpo',      domain:'yotpo.com',            color:'#FF3A70', weight:5  },
-      { name:'Zelis',      domain:'zelis.com',            color:'#003087', weight:6  },
-      { name:'Prokeep',    domain:'prokeep.com',          color:'#F5A623', weight:7  },
-      { name:'Rivet',      domain:'rivethealth.com',      color:'#1DB954', weight:8  },
-      { name:'OnBoard',    domain:'onboardmeetings.com',  color:'#0078D4', weight:9  },
-      { name:'Arch',       domain:'arch.co',              color:'#333333', weight:10 },
+      { name:'Abridge',   domain:'abridge.com',         color:'#6B48FF', weight:1  },
+      { name:'Sublime',   domain:'sublimesecurity.com', color:'#FF4500', weight:2  },
+      { name:'Reka AI',   domain:'reka.ai',             color:'#00C4CC', weight:3  },
+      { name:'Tecovas',   domain:'tecovas.com',         color:'#8B4513', weight:4  },
+      { name:'Yotpo',     domain:'yotpo.com',           color:'#FF3A70', weight:5  },
+      { name:'Zelis',     domain:'zelis.com',           color:'#003087', weight:6  },
+      { name:'Prokeep',   domain:'prokeep.com',         color:'#F5A623', weight:7  },
+      { name:'Rivet',     domain:'rivethealth.com',     color:'#1DB954', weight:8  },
+      { name:'OnBoard',   domain:'onboardmeetings.com', color:'#0078D4', weight:9  },
+      { name:'Arch',      domain:'arch.co',             color:'#333333', weight:10 },
     ];
-    const PAYOUTS = {
-      Abridge:500, Sublime:200, 'Reka AI':150, Tecovas:100,
-      Yotpo:75, Zelis:50, Prokeep:30, Rivet:15, OnBoard:10, Arch:8,
-    };
+    const PAYOUTS = { Abridge:500, Sublime:200, 'Reka AI':150, Tecovas:100, Yotpo:75, Zelis:50, Prokeep:30, Rivet:15, OnBoard:10, Arch:8 };
     const WIN_MESSAGES = [
-      { emoji:'💰', text:'DEAL CLOSED FR', sub:'bro secured the bag' },
-      { emoji:'🔥', text:'BUSSIN PIPELINE', sub:'no cap bestie' },
-      { emoji:'✨', text:'SLAY MOMENT',    sub:'the audacity of winning' },
-      { emoji:'🎯', text:'QUOTA CRUSHED',  sub:'understood king/queen' },
-      { emoji:'🚀', text:'TO THE MOON',    sub:'literally go off' },
+      {emoji:'💰',text:'DEAL CLOSED FR'},{emoji:'🔥',text:'BUSSIN PIPELINE'},
+      {emoji:'✨',text:'SLAY MOMENT'},{emoji:'🎯',text:'QUOTA CRUSHED'},{emoji:'🚀',text:'TO THE MOON'},
     ];
     const LOSE_MESSAGES = [
-      { emoji:'💀', text:'L + RATIO',       sub:'skill issue (jk keep going)' },
-      { emoji:'🤡', text:'CLOWNED',          sub:'get clowned fr' },
-      { emoji:'😭', text:'RIP BOZO',         sub:'the machine ate well today' },
-      { emoji:'📉', text:'PIPELINE DOWN',   sub:'manifesting next spin W' },
+      {emoji:'💀',text:'L + RATIO'},{emoji:'🤡',text:'CLOWNED'},
+      {emoji:'😭',text:'RIP BOZO'},{emoji:'📉',text:'PIPELINE DOWN'},
     ];
     const MEME_BANNERS = [
-      '💀 the machine said skill issue. no cap 💀',
-      '🗿 ohio moment detected in the pipeline 🗿',
-      '✨ sigma grindset = winning slots fr ✨',
-      '🤌 italian hands could not save your ARR 🤌',
-      '🎪 welcome to the circus (you are the AE) 🎪',
-      '🚀 to the moon but quota requires more spins 🚀',
+      '💀 the machine said skill issue. no cap 💀','🗿 ohio moment detected in the pipeline 🗿',
+      '✨ sigma grindset = winning slots fr ✨','🤌 italian hands could not save your ARR 🤌',
+      '🎪 welcome to the circus (you are the AE) 🎪','🚀 to the moon but quota requires more spins 🚀',
       '💸 customer spinning detected. this is fine. 💸',
     ];
 
-    let balance = 1000, currentBet = 10, isSpinning = false;
+    // ====== HANTAVIRUS TWEETS ======
+    const ALL_TWEETS = [
+      {
+        avatar:'🚢', name:'Brenda Kowalski', handle:'@brendak_cruising', tag:'tourist',
+        body:'Day 4 of our Caribbean cruise and honestly having the TIME of my life 🌊 ignore the <span class="hashtag">#hantavirus</span> stuff my daughter keeps texting me about. The buffet is incredible!!',
+        likes:'2.3K', rts:'891', replies:'4.1K', time:'2m ago'
+      },
+      {
+        avatar:'🏛️', name:'HHS Public Affairs', handle:'@HHSgov', verified:true, tag:'gov',
+        body:'Regarding ongoing inquiries about <span class="hashtag">#Hantavirus</span>: We are aware of the situation. We are monitoring. Please do not contact this office directly. We cannot help you individually. Thank you for your understanding. Stay safe.',
+        likes:'891', rts:'12.4K', replies:'31.2K', time:'4m ago'
+      },
+      {
+        avatar:'😱', name:'Jake from Omaha', handle:'@jakefromohiomaha', tag:'scared',
+        body:'WHY IS NOBODY TALKING ABOUT THIS my neighbor's cousin's coworker said they saw a MOUSE on a cruise ship and now I'm not going outside ever again <span class="hashtag">#hantavirus</span> <span class="hashtag">#StayHome</span> <span class="hashtag">#DoNotGoOutside</span>',
+        likes:'47K', rts:'89K', replies:'2.1K', time:'6m ago'
+      },
+      {
+        avatar:'🚢', name:'Royal Caribbean Fan Account', handle:'@RCL_fanboy2009', tag:'tourist',
+        body:'Just got off the phone with Royal Caribbean. They said the <span class="hashtag">#hantavirus</span> concerns are "overblown" and our Mediterranean cruise departs Friday as scheduled 🛳️ Honestly can't wait!! Packing now!! We're SO excited!!',
+        likes:'234', rts:'5.8K', replies:'9.3K', time:'11m ago'
+      },
+      {
+        avatar:'🏛️', name:'CDC Communications', handle:'@CDCgov', verified:true, tag:'gov',
+        body:'<span class="hashtag">#Hantavirus</span> update: We are still gathering data. In the meantime, avoid rodents. Wash your hands. Do not DM us. Do not call us. We are doing our best. Please.',
+        likes:'3.1K', rts:'18.7K', replies:'44K', time:'15m ago'
+      },
+      {
+        avatar:'🙅', name:'Karen Situazione', handle:'@karennotgoing', tag:'scared',
+        body:'I was LITERALLY about to board a cruise ship and my doctor texted me "do not go outside" with no other context. Is this about <span class="hashtag">#hantavirus</span>? SOMEONE EXPLAIN. I have 14 bags packed. The Uber is here.',
+        likes:'71K', rts:'103K', replies:'5.6K', time:'18m ago'
+      },
+      {
+        avatar:'🚢', name:'Deborah Sunshine ✈️', handle:'@deb_loves_cruises', tag:'tourist',
+        body:'Day 7 on the ship!! We've been told to "stay in our cabins as a precaution" but honestly I think it's just a drill 😊 The jacuzzi is still open! Posting from the jacuzzi rn 🛁 <span class="hashtag">#vacation</span> <span class="hashtag">#cruise</span> <span class="hashtag">#hantavirus</span>',
+        likes:'156K', rts:'201K', replies:'88K', time:'22m ago'
+      },
+      {
+        avatar:'🏛️', name:'FEMA', handle:'@fema', verified:true, tag:'gov',
+        body:'We have received 2.4 million inquiries about <span class="hashtag">#hantavirus</span> in the past 48 hours. To address your question: yes, we know. No, we cannot call you back individually. No, we cannot advise on cruise bookings. Please consult your physician or just stay home.',
+        likes:'6.7K', rts:'29K', replies:'67K', time:'28m ago'
+      },
+      {
+        avatar:'😰', name:'Chad Nervousowitz', handle:'@chadnervous99', tag:'scared',
+        body:'bro i looked up <span class="hashtag">#hantavirus</span> symptoms and i definitely don't have them but also i'm not going outside until 2027 just to be safe. ordered 400 dollars of DoorDash. canceled my gym membership. this is my life now.',
+        likes:'312K', rts:'450K', replies:'12K', time:'35m ago'
+      },
+      {
+        avatar:'🚢', name:'Gary & Linda Baumgartner', handle:'@gary_linda_travel', tag:'tourist',
+        body:'UPDATE: The cruise ship captain just announced over the intercom to "remain calm and avoid the lower decks." Linda thinks it's a surprise party for someone. I am less sure. Either way the dinner shows are still on! <span class="hashtag">#cruise</span> <span class="hashtag">#hantavirus</span> <span class="hashtag">#ThisIsFine</span>',
+        likes:'891K', rts:'1.2M', replies:'234K', time:'41m ago'
+      },
+    ];
+
+    // ====== TWEET RENDERER ======
+    const TAG_COLORS = { gov:'gov', tourist:'tourist', scared:'scared', chaos:'chaos' };
+    const TAG_LABELS = { gov:'🏛️ GOV', tourist:'🚢 ON A CRUISE', scared:'😱 SCARED', chaos:'🔥 CHAOS' };
+
+    function renderTweet(t, isNew) {
+      const div = document.createElement('div');
+      div.className = 'tweet' + (isNew ? ' new' : '');
+      div.innerHTML = `
+        <div class="tweet-meta">
+          <div class="tweet-avatar">${t.avatar}</div>
+          <div>
+            <span class="tweet-name">${t.name}</span>
+            ${t.verified ? '<span class="tweet-verified">✓</span>' : ''}
+            <span class="tweet-bio-tag ${TAG_COLORS[t.tag] || 'chaos'}">${TAG_LABELS[t.tag] || t.tag}</span><br>
+            <span class="tweet-handle">${t.handle}</span>
+          </div>
+          <span class="tweet-time">${t.time}</span>
+        </div>
+        <div class="tweet-body">${t.body}</div>
+        <div class="tweet-stats">
+          <span>💬 ${t.replies}</span>
+          <span>🔁 ${t.rts}</span>
+          <span>❤️ ${t.likes}</span>
+        </div>
+      `;
+      return div;
+    }
+
+    function buildTweetFeed() {
+      const list = document.getElementById('tweet-list');
+      list.innerHTML = '';
+      ALL_TWEETS.forEach(t => list.appendChild(renderTweet(t, false)));
+    }
+
+    // Simulate "new" tweets rolling in every 8-15s
+    let tweetIdx = 0;
+    function rotateTweets() {
+      const list = document.getElementById('tweet-list');
+      const t = { ...ALL_TWEETS[tweetIdx % ALL_TWEETS.length] };
+      // Update time to "just now"
+      const mins = Math.floor(Math.random()*3);
+      t.time = mins === 0 ? 'just now' : mins + 'm ago';
+      // Bump numbers slightly
+      const bump = n => { const v = parseFloat(n); return isNaN(v) ? n : (v + Math.floor(Math.random()*50)).toLocaleString(); };
+      t.likes = bump(t.likes.replace(/[KM]/g,'')); t.rts = bump(t.rts.replace(/[KM]/g,''));
+      const newEl = renderTweet(t, true);
+      list.insertBefore(newEl, list.firstChild);
+      // Keep max 10 visible
+      while(list.children.length > 10) list.removeChild(list.lastChild);
+      tweetIdx++;
+      setTimeout(rotateTweets, 8000 + Math.random()*7000);
+    }
+
+    // ====== SLOT MACHINE LOGIC ======
+    let balance = 100, currentBet = 5, isSpinning = false;
     let history = [], spinCount = 0;
     let hasDippedBelow1000 = false, puppyShownThisRound = false;
-    let brokeShown = false;
 
-    const balanceEl    = document.getElementById('balance');
-    const spinBtn      = document.getElementById('spin-btn');
-    const maxBtn       = document.getElementById('max-btn');
-    const historyList  = document.getElementById('history-list');
-    const memeBanner   = document.getElementById('meme-banner');
-    const winOverlay   = document.getElementById('win-overlay');
-    const loseOverlay  = document.getElementById('lose-overlay');
-    const puppyOverlay = document.getElementById('puppy-overlay');
-    const brokeOverlay = document.getElementById('broke-overlay');
-    const reelInners   = [1,2,3].map(i=>document.getElementById('reel'+i+'-inner'));
-    const reels        = [1,2,3].map(i=>document.getElementById('reel'+i));
+    const balanceEl  = document.getElementById('balance');
+    const spinBtn    = document.getElementById('spin-btn');
+    const maxBtn     = document.getElementById('max-btn');
+    const histList   = document.getElementById('history-list');
+    const memeBanner = document.getElementById('meme-banner');
+    const winOv      = document.getElementById('win-overlay');
+    const loseOv     = document.getElementById('lose-overlay');
+    const puppyOv    = document.getElementById('puppy-overlay');
+    const brokeOv    = document.getElementById('broke-overlay');
+    const reelInners = [1,2,3].map(i=>document.getElementById('reel'+i+'-inner'));
+    const reels      = [1,2,3].map(i=>document.getElementById('reel'+i));
 
-    // ====== LOGO HELPERS ======
-    function logoUrl(sym) { return CLR + sym.domain; }
-
-    function createSymbolEl(sym) {
-      const d = document.createElement('div');
-      d.className = 'reel-symbol';
-      d.dataset.name = sym.name;
-      const img = document.createElement('img');
-      img.className = 'logo-img';
-      img.src = logoUrl(sym);
-      img.alt = sym.name;
-      img.onerror = function(){
-        this.remove();
-        const fb = document.createElement('div');
-        fb.className = 'logo-fallback';
-        fb.style.background = sym.color;
-        fb.textContent = sym.name.substring(0,3);
-        d.prepend(fb);
-      };
-      const lbl = document.createElement('div');
-      lbl.className = 'logo-label';
-      lbl.textContent = sym.name;
-      d.appendChild(img);
-      d.appendChild(lbl);
-      return d;
+    function logoUrl(s){ return CLR + s.domain; }
+    function createSymbolEl(s){
+      const d=document.createElement('div'); d.className='reel-symbol'; d.dataset.name=s.name;
+      const img=document.createElement('img'); img.className='logo-img'; img.src=logoUrl(s); img.alt=s.name;
+      img.onerror=function(){this.remove();const fb=document.createElement('div');fb.className='logo-fallback';fb.style.background=s.color;fb.textContent=s.name.substring(0,3);d.prepend(fb);};
+      const lbl=document.createElement('div'); lbl.className='logo-label'; lbl.textContent=s.name;
+      d.appendChild(img); d.appendChild(lbl); return d;
     }
-
-    function updateSymbolEl(el, sym) {
-      el.dataset.name = sym.name;
-      const img = el.querySelector('img.logo-img');
-      const fb  = el.querySelector('.logo-fallback');
-      const lbl = el.querySelector('.logo-label');
-      if(img){ img.src = logoUrl(sym); img.alt = sym.name; }
-      else if(fb){ fb.style.background = sym.color; fb.textContent = sym.name.substring(0,3); }
-      if(lbl) lbl.textContent = sym.name;
+    function updateSymbolEl(el,s){
+      el.dataset.name=s.name;
+      const img=el.querySelector('img.logo-img'),fb=el.querySelector('.logo-fallback'),lbl=el.querySelector('.logo-label');
+      if(img){img.src=logoUrl(s);img.alt=s.name;} else if(fb){fb.style.background=s.color;fb.textContent=s.name.substring(0,3);}
+      if(lbl) lbl.textContent=s.name;
     }
-
-    // ====== WEIGHTED RANDOM ======
-    function weightedRandom() {
-      const pool = SYMBOLS.map(s=>({sym:s, w:1/s.weight}));
-      const total = pool.reduce((a,s)=>a+s.w, 0);
-      let r = Math.random()*total;
-      for(const s of pool){ r-=s.w; if(r<=0) return s.sym; }
-      return pool[pool.length-1].sym;
+    function weightedRandom(){
+      const pool=SYMBOLS.map(s=>({sym:s,w:1/s.weight}));
+      const total=pool.reduce((a,s)=>a+s.w,0); let r=Math.random()*total;
+      for(const s of pool){r-=s.w;if(r<=0)return s.sym;} return pool[pool.length-1].sym;
     }
-
-    // ====== BUILD REELS ======
-    function buildReels() {
-      reelInners.forEach(inner=>{
-        inner.innerHTML=''; inner.style.transform='';
-        for(let i=0;i<5;i++){
-          inner.appendChild(createSymbolEl(SYMBOLS[Math.floor(Math.random()*SYMBOLS.length)]));
-        }
+    function buildReels(){
+      reelInners.forEach(inner=>{inner.innerHTML='';inner.style.transform='';
+        for(let i=0;i<5;i++) inner.appendChild(createSymbolEl(SYMBOLS[Math.floor(Math.random()*SYMBOLS.length)]));
       });
     }
-
-    function setReelSymbol(innerEl, sym) {
-      const all = innerEl.querySelectorAll('.reel-symbol');
-      updateSymbolEl(all[2], sym);
-      [0,1,3,4].forEach(i=>updateSymbolEl(all[i], SYMBOLS[Math.floor(Math.random()*SYMBOLS.length)]));
+    function setReelSymbol(innerEl,sym){
+      const all=innerEl.querySelectorAll('.reel-symbol'); updateSymbolEl(all[2],sym);
+      [0,1,3,4].forEach(i=>updateSymbolEl(all[i],SYMBOLS[Math.floor(Math.random()*SYMBOLS.length)]));
     }
-
-    // ====== ANIMATE REEL ======
-    function animateReel(idx, finalSym, dur) {
+    function animateReel(idx,finalSym,dur){
       return new Promise(resolve=>{
-        const inner = reelInners[idx];
-        const start = performance.now();
-        let lastSwap = start, pos = 0;
+        const inner=reelInners[idx]; const start=performance.now(); let lastSwap=start,pos=0;
         function tick(now){
-          const e = now - start;
-          const speed = e < dur-300 ? 18 : Math.max(3, 18*(1-(e-(dur-300))/300));
-          pos += speed; if(pos>=100) pos-=100;
-          inner.style.transform = `translateY(${pos}px)`;
-          if(now-lastSwap > 90 && e < dur-200){
-            inner.querySelectorAll('.reel-symbol').forEach(el=>{
-              updateSymbolEl(el, SYMBOLS[Math.floor(Math.random()*SYMBOLS.length)]);
-            });
-            lastSwap = now;
-          }
-          if(e<dur){ requestAnimationFrame(tick); }
-          else{ inner.style.transform=''; setReelSymbol(inner,finalSym); resolve(); }
-        }
-        requestAnimationFrame(tick);
+          const e=now-start;
+          const speed=e<dur-300?18:Math.max(3,18*(1-(e-(dur-300))/300));
+          pos+=speed; if(pos>=100) pos-=100;
+          inner.style.transform=`translateY(${pos}px)`;
+          if(now-lastSwap>90&&e<dur-200){ inner.querySelectorAll('.reel-symbol').forEach(el=>updateSymbolEl(el,SYMBOLS[Math.floor(Math.random()*SYMBOLS.length)])); lastSwap=now; }
+          if(e<dur){requestAnimationFrame(tick);} else{inner.style.transform='';setReelSymbol(inner,finalSym);resolve();}
+        } requestAnimationFrame(tick);
       });
     }
-
-    // ====== SPIN ======
-    async function spin() {
+    async function spin(){
       if(isSpinning) return;
-      if(balance <= 0){ brokeOverlay.classList.remove('hidden'); return; }
-      if(balance < currentBet){ showMeme('💀 not enough rizz coins to spin! lower your bet, king 💀'); return; }
-
-      isSpinning = true; spinCount++;
-      const prevBalance = balance;
-      balance -= currentBet; updateBalance();
-      if(balance < 1000) hasDippedBelow1000 = true;
-
-      spinBtn.disabled = true;
-      spinBtn.classList.add('spinning');
-      spinBtn.textContent = '🌀 SPINNING...';
-      reels.forEach(r=>r.classList.remove('winner'));
-      spawnParticles();
-
-      const result = [weightedRandom(), weightedRandom(), weightedRandom()];
-      await Promise.all([
-        animateReel(0, result[0], 900),
-        animateReel(1, result[1], 1200),
-        animateReel(2, result[2], 1500),
-      ]);
-
-      const [a,b,c] = result;
-      let payout = 0, isWin = false;
-      if(a.name===b.name && b.name===c.name){
-        payout = currentBet*(PAYOUTS[a.name]||10); isWin=true;
-        reels.forEach(r=>r.classList.add('winner'));
+      if(balance<=0){brokeOv.classList.remove('hidden');return;}
+      if(balance<currentBet){showMeme('💀 not enough rizz coins! lower your bet, king 💀');return;}
+      isSpinning=true; spinCount++;
+      const prevBalance=balance; balance-=currentBet; updateBalance();
+      if(balance<1000) hasDippedBelow1000=true;
+      spinBtn.disabled=true; spinBtn.classList.add('spinning'); spinBtn.textContent='🌀 SPINNING...';
+      reels.forEach(r=>r.classList.remove('winner')); spawnParticles();
+      const result=[weightedRandom(),weightedRandom(),weightedRandom()];
+      await Promise.all([animateReel(0,result[0],900),animateReel(1,result[1],1200),animateReel(2,result[2],1500)]);
+      const [a,b,c]=result; let payout=0,isWin=false;
+      if(a.name===b.name&&b.name===c.name){
+        payout=currentBet*(PAYOUTS[a.name]||10);isWin=true;reels.forEach(r=>r.classList.add('winner'));
       } else if(a.name===b.name||b.name===c.name||a.name===c.name){
-        payout = currentBet*2; isWin=true;
-        reels.forEach((r,i)=>{
-          if((i===0&&(a.name===b.name||a.name===c.name))||(i===1&&(a.name===b.name||b.name===c.name))||(i===2&&(b.name===c.name||a.name===c.name)))
-            r.classList.add('winner');
-        });
+        payout=currentBet*2;isWin=true;
+        reels.forEach((r,i)=>{if((i===0&&(a.name===b.name||a.name===c.name))||(i===1&&(a.name===b.name||b.name===c.name))||(i===2&&(b.name===c.name||a.name===c.name)))r.classList.add('winner');});
       }
-
       if(isWin){
-        balance += payout; updateBalance();
-        recordHistory(result, payout, true);
-        if(hasDippedBelow1000 && balance>=1000 && prevBalance-currentBet<1000 && !puppyShownThisRound){
-          puppyShownThisRound = true;
-          hasDippedBelow1000 = false;
-          setTimeout(()=>showPuppy(), 400);
-        } else {
-          setTimeout(()=>showWin(payout), 300);
-        }
+        balance+=payout;updateBalance(); recordHistory(result,payout,true);
+        if(hasDippedBelow1000&&balance>=1000&&prevBalance-currentBet<1000&&!puppyShownThisRound){
+          puppyShownThisRound=true;hasDippedBelow1000=false;setTimeout(()=>showPuppy(),400);
+        } else setTimeout(()=>showWin(payout),300);
       } else {
-        recordHistory(result, 0, false);
-        // check broke
-        if(balance <= 0){
-          setTimeout(()=>{ brokeOverlay.classList.remove('hidden'); }, 400);
-        } else {
-          setTimeout(()=>showLoss(), 300);
-        }
+        recordHistory(result,0,false);
+        if(balance<=0){setTimeout(()=>brokeOv.classList.remove('hidden'),400);}
+        else setTimeout(()=>showLoss(),300);
       }
-
       if(spinCount%5===0) showMeme(MEME_BANNERS[Math.floor(Math.random()*MEME_BANNERS.length)]);
-      spinBtn.disabled = false;
-      spinBtn.classList.remove('spinning');
-      spinBtn.textContent = '🎰 SPIN (no cap)';
-      isSpinning = false;
+      spinBtn.disabled=false;spinBtn.classList.remove('spinning');spinBtn.textContent='🎰 SPIN (no cap)';isSpinning=false;
     }
-
-    function updateBalance(){ balanceEl.textContent = balance.toLocaleString(); }
-
-    function showMeme(msg){
-      memeBanner.textContent = msg;
-      memeBanner.classList.remove('hidden');
-      memeBanner.style.animation='none'; void memeBanner.offsetWidth;
-      memeBanner.style.animation='banner-shake .5s ease-in-out';
-      setTimeout(()=>memeBanner.classList.add('hidden'),4000);
-    }
-    function showWin(amount){
-      const msg=WIN_MESSAGES[Math.floor(Math.random()*WIN_MESSAGES.length)];
-      document.getElementById('win-emoji').textContent=msg.emoji;
-      document.getElementById('win-text').textContent=msg.text;
-      document.getElementById('win-amount').textContent='+'+amount.toLocaleString()+' RIZZ COINS 💰';
-      winOverlay.classList.remove('hidden');
-      spawnConfetti();
-    }
-    function showLoss(){
-      const msg=LOSE_MESSAGES[Math.floor(Math.random()*LOSE_MESSAGES.length)];
-      document.getElementById('lose-emoji').textContent=msg.emoji;
-      document.getElementById('lose-text').textContent=msg.text;
-      loseOverlay.classList.remove('hidden');
-    }
-    function showPuppy(){
-      puppyOverlay.classList.remove('hidden');
-      spawnConfetti(); setTimeout(spawnConfetti,600); setTimeout(spawnConfetti,1200);
-    }
+    function updateBalance(){balanceEl.textContent=balance.toLocaleString();}
+    function showMeme(msg){memeBanner.textContent=msg;memeBanner.classList.remove('hidden');memeBanner.style.animation='none';void memeBanner.offsetWidth;memeBanner.style.animation='banner-shake .5s ease-in-out';setTimeout(()=>memeBanner.classList.add('hidden'),4000);}
+    function showWin(amount){const m=WIN_MESSAGES[Math.floor(Math.random()*WIN_MESSAGES.length)];document.getElementById('win-emoji').textContent=m.emoji;document.getElementById('win-text').textContent=m.text;document.getElementById('win-amount').textContent='+'+amount.toLocaleString()+' RIZZ COINS 💰';winOv.classList.remove('hidden');spawnConfetti();}
+    function showLoss(){const m=LOSE_MESSAGES[Math.floor(Math.random()*LOSE_MESSAGES.length)];document.getElementById('lose-emoji').textContent=m.emoji;document.getElementById('lose-text').textContent=m.text;loseOv.classList.remove('hidden');}
+    function showPuppy(){puppyOv.classList.remove('hidden');spawnConfetti();setTimeout(spawnConfetti,600);setTimeout(spawnConfetti,1200);}
     function recordHistory(result,payout,win){
       history.unshift({names:result.map(r=>r.name).join(' | '),payout,bet:currentBet,win});
       if(history.length>20) history.pop();
-      historyList.innerHTML=history.map(h=>{
-        const cls=h.win?'win':'loss';
-        const lbl=h.win?'W +'+h.payout.toLocaleString()+' 🤑':'L -'+h.bet+' 💀';
-        return `<li class="${cls}"><span>${h.names}</span><span>${lbl}</span></li>`;
-      }).join('');
+      histList.innerHTML=history.map(h=>`<li class="${h.win?'win':'loss'}"><span>${h.names}</span><span>${h.win?'W +'+h.payout.toLocaleString()+' 🤑':'L -'+h.bet+' 💀'}</span></li>`).join('');
     }
-    function spawnParticles(){
-      const emojis=['💸','⭐','🌟','✨','💫','🎉','🎊','🔥','💎'];
-      for(let i=0;i<12;i++) setTimeout(()=>{
-        const p=document.createElement('div'); p.className='particle';
-        p.textContent=emojis[Math.floor(Math.random()*emojis.length)];
-        p.style.left=Math.random()*100+'vw';
-        p.style.animationDuration=(2+Math.random()*3)+'s';
-        p.style.fontSize=(1+Math.random()*1.5)+'rem';
-        document.getElementById('particles').appendChild(p);
-        setTimeout(()=>p.remove(),5000);
-      },i*80);
-    }
-    function spawnConfetti(){
-      const colors=['#ff006e','#00f5ff','#ffff00','#39ff14','#bf00ff','#ff9500'];
-      for(let i=0;i<80;i++) setTimeout(()=>{
-        const c=document.createElement('div'); c.className='confetti';
-        c.style.left=Math.random()*100+'vw';
-        c.style.background=colors[Math.floor(Math.random()*colors.length)];
-        c.style.width=(6+Math.random()*8)+'px'; c.style.height=c.style.width;
-        c.style.setProperty('--drift',(Math.random()*200-100)+'px');
-        c.style.animationDuration=(2+Math.random()*3)+'s';
-        document.body.appendChild(c); setTimeout(()=>c.remove(),5000);
-      },i*25);
-    }
-
-    // ====== BUILD PAY TABLE ======
+    function spawnParticles(){const emojis=['💸','⭐','🌟','✨','💫','🎉','🎊','🔥','💎'];for(let i=0;i<12;i++)setTimeout(()=>{const p=document.createElement('div');p.className='particle';p.textContent=emojis[Math.floor(Math.random()*emojis.length)];p.style.left=Math.random()*100+'vw';p.style.animationDuration=(2+Math.random()*3)+'s';p.style.fontSize=(1+Math.random()*1.5)+'rem';document.getElementById('particles').appendChild(p);setTimeout(()=>p.remove(),5000);},i*80);}
+    function spawnConfetti(){const cols=['#ff006e','#00f5ff','#ffff00','#39ff14','#bf00ff','#ff9500'];for(let i=0;i<80;i++)setTimeout(()=>{const c=document.createElement('div');c.className='confetti';c.style.left=Math.random()*100+'vw';c.style.background=cols[Math.floor(Math.random()*cols.length)];c.style.width=(6+Math.random()*8)+'px';c.style.height=c.style.width;c.style.setProperty('--drift',(Math.random()*200-100)+'px');c.style.animationDuration=(2+Math.random()*3)+'s';document.body.appendChild(c);setTimeout(()=>c.remove(),5000);},i*25);}
     function buildPayTable(){
-      const tbody = document.getElementById('paytable-body');
-      const vibes = ['UNICORN DEAL 🦄','MEGA W 🔥','BUSSIN FR ✨','PIPELINE HEAT 🔥','SLAY 💅','MID DEAL 😐','SMALL W 💸','ok sure','sure i guess','whatever'];
+      const tbody=document.getElementById('paytable-body');
+      const vibes=['UNICORN DEAL 🦄','MEGA W 🔥','BUSSIN FR ✨','PIPELINE HEAT 🔥','SLAY 💅','MID DEAL 😐','SMALL W 💸','ok sure','sure i guess','whatever'];
       SYMBOLS.forEach((sym,i)=>{
         const tr=document.createElement('tr');
         const td1=document.createElement('td');
-        const img=document.createElement('img');
-        img.className='pt-logo'; img.src=logoUrl(sym); img.alt=sym.name;
-        img.onerror=function(){this.remove();};
-        td1.appendChild(img);
-        td1.appendChild(document.createTextNode(sym.name));
+        const img=document.createElement('img'); img.className='pt-logo'; img.src=logoUrl(sym); img.alt=sym.name; img.onerror=function(){this.remove();};
+        td1.appendChild(img); td1.appendChild(document.createTextNode(sym.name));
         const td2=document.createElement('td'); td2.textContent=(PAYOUTS[sym.name]||8)+'x';
         const td3=document.createElement('td'); td3.textContent=vibes[i]||'W';
-        tr.appendChild(td1); tr.appendChild(td2); tr.appendChild(td3);
-        tbody.appendChild(tr);
+        tr.appendChild(td1);tr.appendChild(td2);tr.appendChild(td3);tbody.appendChild(tr);
       });
       const trAny=document.createElement('tr');
-      ['Any 2 match','2x','mid (still a W tho)'].forEach(t=>{ const td=document.createElement('td'); td.textContent=t; trAny.appendChild(td); });
+      ['Any 2 match','2x','mid (still a W tho)'].forEach(t=>{const td=document.createElement('td');td.textContent=t;trAny.appendChild(td);});
       tbody.appendChild(trAny);
     }
-
-    // ====== EVENT LISTENERS ======
-    spinBtn.addEventListener('click', spin);
+    spinBtn.addEventListener('click',spin);
     maxBtn.addEventListener('click',()=>{
       document.querySelectorAll('.bet-btn').forEach(b=>b.classList.remove('active'));
-      document.querySelector('[data-bet="250"]').classList.add('active');
-      currentBet=250;
-      showMeme('🗿 MAX BET ACTIVATED. sigma behavior detected 🗿');
+      document.querySelector('[data-bet="50"]').classList.add('active');
+      currentBet=50; showMeme('🗿 MAX BET ACTIVATED. sigma behavior detected 🗿');
     });
     document.querySelectorAll('.bet-btn').forEach(btn=>btn.addEventListener('click',()=>{
       document.querySelectorAll('.bet-btn').forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      currentBet=parseInt(btn.dataset.bet);
+      btn.classList.add('active'); currentBet=parseInt(btn.dataset.bet);
     }));
-    document.getElementById('win-close').addEventListener('click',()=>{
-      winOverlay.classList.add('hidden');
-      reels.forEach(r=>r.classList.remove('winner'));
-    });
-    document.getElementById('lose-close').addEventListener('click',()=>loseOverlay.classList.add('hidden'));
-    document.getElementById('puppy-close').addEventListener('click',()=>{
-      puppyOverlay.classList.add('hidden');
-      puppyShownThisRound=false;
-      reels.forEach(r=>r.classList.remove('winner'));
-    });
+    document.getElementById('win-close').addEventListener('click',()=>{winOv.classList.add('hidden');reels.forEach(r=>r.classList.remove('winner'));});
+    document.getElementById('lose-close').addEventListener('click',()=>loseOv.classList.add('hidden'));
+    document.getElementById('puppy-close').addEventListener('click',()=>{puppyOv.classList.add('hidden');puppyShownThisRound=false;reels.forEach(r=>r.classList.remove('winner'));});
     document.getElementById('restart-btn').addEventListener('click',()=>{
-      balance=1000; currentBet=10; spinCount=0;
-      hasDippedBelow1000=false; puppyShownThisRound=false; brokeShown=false;
-      history=[];
-      historyList.innerHTML='';
-      updateBalance();
+      balance=100;currentBet=5;spinCount=0;hasDippedBelow1000=false;puppyShownThisRound=false;
+      history=[];histList.innerHTML='';updateBalance();
       document.querySelectorAll('.bet-btn').forEach(b=>b.classList.remove('active'));
-      document.querySelector('[data-bet="10"]').classList.add('active');
-      reels.forEach(r=>r.classList.remove('winner'));
-      brokeOverlay.classList.add('hidden');
-      buildReels();
+      document.querySelector('[data-bet="5"]').classList.add('active');
+      reels.forEach(r=>r.classList.remove('winner'));brokeOv.classList.add('hidden');buildReels();
       showMeme('🔄 RESTARTED. second chances are for real ones. 🔄');
     });
-    document.addEventListener('keydown',e=>{
-      if(e.code==='Space'&&!isSpinning){e.preventDefault();spin();}
-    });
-
-    // Ambient particles
+    document.addEventListener('keydown',e=>{if(e.code==='Space'&&!isSpinning){e.preventDefault();spin();}});
     setInterval(()=>{
       const emojis=['🗿','💀','🔥','✨','💸','🎰','🤑'];
-      const p=document.createElement('div'); p.className='particle';
+      const p=document.createElement('div');p.className='particle';
       p.textContent=emojis[Math.floor(Math.random()*emojis.length)];
-      p.style.left=Math.random()*100+'vw';
-      p.style.animationDuration=(5+Math.random()*8)+'s';
-      p.style.opacity='0.1';
-      p.style.fontSize=(0.8+Math.random())+'rem';
-      document.getElementById('particles').appendChild(p);
-      setTimeout(()=>p.remove(),13000);
+      p.style.left=Math.random()*100+'vw';p.style.animationDuration=(5+Math.random()*8)+'s';
+      p.style.opacity='0.1';p.style.fontSize=(0.8+Math.random())+'rem';
+      document.getElementById('particles').appendChild(p);setTimeout(()=>p.remove(),13000);
     },900);
-
     buildReels();
     buildPayTable();
     updateBalance();
+    buildTweetFeed();
+    setTimeout(rotateTweets, 8000);
   </script>
 </body>
 </html>
