@@ -166,10 +166,63 @@
     #ad-tagline{font-size:.95rem;font-weight:900;color:rgba(255,255,255,.85);margin-bottom:.75rem;font-style:italic;}
     #ad-features{list-style:none;margin-bottom:.9rem;}
     #ad-features li{font-size:.8rem;color:rgba(255,255,255,.75);padding:.2rem 0;}
-    #ad-cta{display:block;width:fit-content;background:linear-gradient(135deg,#39ff14,#00c853);color:#000;font-family:'Bangers',cursive;font-size:1.3rem;letter-spacing:.06em;padding:.6rem 1.6rem;border-radius:12px;animation:cta-pulse .8s ease-in-out infinite alternate;cursor:pointer;margin-bottom:.6rem;}
+    #ad-cta{display:block;width:fit-content;background:linear-gradient(135deg,#39ff14,#00c853);color:#000;font-family:'Bangers',cursive;font-size:1.3rem;letter-spacing:.06em;padding:.6rem 1.6rem;border-radius:12px;animation:cta-pulse .8s ease-in-out infinite alternate;cursor:pointer;margin-bottom:.6rem;border:none;}
     @keyframes cta-pulse{from{box-shadow:0 0 15px rgba(57,255,20,.4);transform:scale(1);}to{box-shadow:0 0 35px rgba(57,255,20,.8);transform:scale(1.03);}}
     #ad-disclaimer{font-size:.58rem;color:rgba(255,255,255,.3);line-height:1.4;}
-    /* OVERLAYS */
+    /* ===================== SMOKE SCREEN ===================== */
+    #smoke-screen{
+      position:fixed;inset:0;z-index:9999;
+      pointer-events:all;
+      display:flex;align-items:center;justify-content:center;
+      background:radial-gradient(ellipse at center,rgba(0,30,0,.92) 0%,rgba(0,10,0,.97) 100%);
+      opacity:0;transition:opacity .4s ease;
+    }
+    #smoke-screen.active{opacity:1;}
+    #smoke-screen.fade-out{opacity:0;transition:opacity 1.2s ease;}
+    #smoke-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+    .smoke-cloud{
+      position:absolute;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(57,255,20,.25) 0%,rgba(0,245,255,.1) 40%,transparent 70%);
+      animation:cloud-drift linear forwards;
+    }
+    @keyframes cloud-drift{
+      0%{transform:translate(0,0) scale(0.3);opacity:0;}
+      15%{opacity:1;}
+      85%{opacity:.7;}
+      100%{transform:translate(var(--dx),var(--dy)) scale(var(--ds));opacity:0;}
+    }
+    #smoke-message{
+      position:relative;z-index:2;text-align:center;
+      animation:smoke-msg-in .5s cubic-bezier(.175,.885,.32,1.275) forwards;
+    }
+    @keyframes smoke-msg-in{0%{transform:scale(.5);opacity:0;}100%{transform:scale(1);opacity:1;}}
+    #smoke-message .sm-title{
+      font-family:'Bangers',cursive;font-size:clamp(2.5rem,8vw,5rem);letter-spacing:.08em;
+      background:linear-gradient(135deg,#39ff14,#00f5ff,#39ff14);
+      background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      animation:ad-title-shimmer 1.5s linear infinite;
+      text-shadow:none;filter:drop-shadow(0 0 30px rgba(57,255,20,.8));
+      display:block;margin-bottom:.5rem;
+    }
+    #smoke-message .sm-sub{
+      font-size:1rem;font-weight:900;color:rgba(57,255,20,.85);letter-spacing:.05em;
+      text-shadow:0 0 15px rgba(57,255,20,.6);
+      display:block;margin-bottom:1.5rem;
+    }
+    #smoke-message .sm-emojis{
+      font-size:2.5rem;display:block;margin-bottom:1rem;
+      animation:emoji-drift 2s ease-in-out infinite alternate;
+    }
+    @keyframes emoji-drift{0%{transform:translateY(0) rotate(-5deg);}100%{transform:translateY(-10px) rotate(5deg);}}
+    #smoke-message .sm-close{
+      background:rgba(255,255,255,.08);border:2px solid rgba(57,255,20,.4);color:rgba(57,255,20,.9);
+      font-family:'Bangers',cursive;font-size:1rem;letter-spacing:.06em;
+      padding:.5rem 1.5rem;border-radius:10px;cursor:pointer;
+      transition:all .2s;
+    }
+    #smoke-message .sm-close:hover{background:rgba(57,255,20,.15);border-color:#39ff14;}
+    /* ========================================================= */
     .overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:100;backdrop-filter:blur(8px);}
     #win-overlay{background:rgba(0,255,100,.15);animation:overlay-pop .3s ease-out;}
     #lose-overlay{background:rgba(255,0,50,.15);animation:overlay-pop .3s ease-out;}
@@ -214,6 +267,18 @@
 </head>
 <body>
   <div id="particles"></div>
+
+  <!-- SMOKE SCREEN OVERLAY -->
+  <div id="smoke-screen">
+    <div id="smoke-particles"></div>
+    <div id="smoke-message">
+      <span class="sm-emojis">💨🐀☠️💨</span>
+      <span class="sm-title">💨 VAPED 💨</span>
+      <span class="sm-sub">you have been HantaVaped™. this is fine.</span>
+      <button class="sm-close" id="smoke-close">clear the air 🌬️</button>
+    </div>
+  </div>
+
   <div id="app">
     <header>
       <div>
@@ -238,7 +303,6 @@
       </div>
       <div id="payline"></div>
     </div>
-
     <div id="bet-section">
       <label>BET (rizz per spin):</label>
       <div id="bet-buttons">
@@ -250,7 +314,6 @@
         <button class="bet-btn danger" data-bet="1000">1000 ☠️</button>
       </div>
     </div>
-
     <div id="controls">
       <button id="spin-btn">🎰 SPIN (no cap)</button>
       <button id="max-btn">💀 MAX BET 1000 (pure chaos)</button>
@@ -266,7 +329,6 @@
         <tr><th>Logo</th><th>Payout</th><th>Vibe</th></tr>
       </table>
     </div>
-
     <div id="twitter-feed">
       <div id="twitter-header">
         <span class="x-logo">𝕏</span>
@@ -275,7 +337,6 @@
       </div>
       <div id="tweet-list"></div>
     </div>
-
     <div id="hantavape-ad">
       <div id="ad-smoke">
         <div class="smoke-puff" style="width:80px;height:80px;left:10%;bottom:0;animation-duration:4s;"></div>
@@ -295,7 +356,7 @@
             <li>☣️ Not endorsed by the US Dept. of Health (they stopped answering)</li>
             <li>💀 Do NOT use near mice, ships, or the outdoors</li>
           </ul>
-          <div id="ad-cta">VAPE THE VIBES 💨🐀</div>
+          <button id="ad-cta">VAPE THE VIBES 💨🐀</button>
           <div id="ad-disclaimer">*HantaVape™ is a parody product. HantaVape LLC assumes no liability for rodent-related incidents or CDC non-responses.</div>
         </div>
       </div>
@@ -319,7 +380,6 @@
       <button class="ov-btn" id="lose-close">rip bozo, keep going</button>
     </div>
   </div>
-
   <!-- 1000-coin comeback: Dolly is proud -->
   <div id="puppy-overlay" class="hidden">
     <div id="puppy-card">
@@ -331,7 +391,6 @@
       <button class="ov-btn" id="puppy-close">ok bestie, keep grinding</button>
     </div>
   </div>
-
   <!-- Zero coins: Dolly is devastated -->
   <div id="broke-overlay" class="hidden">
     <div id="broke-card">
@@ -379,7 +438,7 @@
       '✨ sigma grindset = winning slots fr ✨','🤌 italian hands could not save your ARR 🤌',
       '🎪 welcome to the circus (you are the AE) 🎪','🚀 to the moon but quota requires more spins 🚀',
       '💸 customer spinning detected. this is fine. 💸',
-      '☠️ 1000 bet?? absolute deviant behavior ☠️','💀 bro really said \'yolo\' to their entire bankroll 💀',
+      '☠️ 1000 bet?? absolute deviant behavior ☠️','💀 bro really said YOLO to their entire bankroll 💀',
       '🐶 Dolly is watching. do not embarrass yourself. 🐶',
     ];
     const ALL_TWEETS=[
@@ -411,6 +470,61 @@
       while(list.children.length>10)list.removeChild(list.lastChild);
       tweetIdx++;setTimeout(rotateTweets,8000+Math.random()*7000);
     }
+
+    /* =================== SMOKE SCREEN =================== */
+    const smokeScreen=document.getElementById('smoke-screen');
+    const smokeParticles=document.getElementById('smoke-particles');
+    let smokeTimeout=null;
+    function launchSmokeScreen(){
+      // clear any pending close
+      if(smokeTimeout)clearTimeout(smokeTimeout);
+      smokeParticles.innerHTML='';
+      smokeScreen.classList.remove('fade-out');
+      smokeScreen.style.display='flex';
+      // force reflow then activate
+      void smokeScreen.offsetWidth;
+      smokeScreen.classList.add('active');
+      // spawn lots of cloud particles
+      for(let i=0;i<60;i++){
+        setTimeout(()=>{
+          const c=document.createElement('div');c.className='smoke-cloud';
+          const size=80+Math.random()*300;
+          c.style.width=size+'px';c.style.height=size+'px';
+          c.style.left=(Math.random()*110-5)+'%';
+          c.style.top=(Math.random()*110-5)+'%';
+          const dx=(Math.random()-0.5)*600;
+          const dy=(Math.random()-0.5)*600;
+          const ds=1.5+Math.random()*3;
+          const dur=2+Math.random()*4;
+          c.style.setProperty('--dx',dx+'px');
+          c.style.setProperty('--dy',dy+'px');
+          c.style.setProperty('--ds',ds);
+          c.style.animationDuration=dur+'s';
+          c.style.animationDelay=(Math.random()*1.5)+'s';
+          smokeParticles.appendChild(c);
+          setTimeout(()=>c.remove(),(dur+1.5)*1000);
+        },i*40);
+      }
+      // auto-dismiss after 6s
+      smokeTimeout=setTimeout(closeSmokeScreen,6000);
+    }
+    function closeSmokeScreen(){
+      if(smokeTimeout){clearTimeout(smokeTimeout);smokeTimeout=null;}
+      smokeScreen.classList.remove('active');
+      smokeScreen.classList.add('fade-out');
+      setTimeout(()=>{
+        smokeScreen.style.display='none';
+        smokeScreen.classList.remove('fade-out');
+        smokeParticles.innerHTML='';
+      },1300);
+    }
+    document.getElementById('ad-cta').addEventListener('click',launchSmokeScreen);
+    document.getElementById('smoke-close').addEventListener('click',closeSmokeScreen);
+    smokeScreen.addEventListener('click',function(e){if(e.target===smokeScreen)closeSmokeScreen();});
+    // hide smoke screen initially (opacity:0, display managed by JS)
+    smokeScreen.style.display='none';
+    /* ===================================================== */
+
     let balance=100,currentBet=5,isSpinning=false,history=[],spinCount=0;
     let hasDippedBelow1000=false,puppyShownThisRound=false;
     const balanceEl=document.getElementById('balance'),spinBtn=document.getElementById('spin-btn'),maxBtn=document.getElementById('max-btn');
